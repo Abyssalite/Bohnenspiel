@@ -60,7 +60,7 @@ public class BohnenView extends JFrame{
         mulBtn.setActionCommand("mulBtn");
 
 		textLabel = new JLabel(text, JLabel.CENTER);
-        textLabel.setBounds(200, 120, 100, 60);
+        textLabel.setBounds(50, 120, 400, 60);
         textLabel.setFont(new Font( "Arial", Font.PLAIN, 30));
 
         textField1 = new JTextField();
