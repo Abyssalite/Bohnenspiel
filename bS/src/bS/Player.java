@@ -1,13 +1,26 @@
 package bS;
 
 public class Player {
-    private String name;
-    private int score;
+	private final String NAME;
+	private int score;
 
-    public Player(String name) {
-        this.name = name;
-        this.score = 0;
+	public Player(String name, int score) {
+		this.NAME = name;
+		this.score = score;
+
+	} 
+
+    public String getName(){
+        return NAME;
     }
 
-    // Other player methods...
+    public int getScore(){
+        return score;
+    }
+
+    public void setScore(int score){
+        this.score = score;
+    }
+
 }
+

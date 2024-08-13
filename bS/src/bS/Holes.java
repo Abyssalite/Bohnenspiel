@@ -1,25 +1,28 @@
 package bS;
 
 public class Holes {
-    private int[] board;
+    private final int INDEX;
+	private final String  POSITION;
+    private int stone;
 
-    public Holes(int stonesPerHole) {
-        this.board = new int[14];
-        for (int i = 0; i < 6; i++) {
-            board[i] = stonesPerHole;  // Player 1's holes
-            board[i + 7] = stonesPerHole;  // Player 2's holes
-        }
+    public Holes(int stone, int index, String position) {
+       this.INDEX = index;
+       this.POSITION = position;
+       this.stone = stone;
     }
 
-    public int[] getBoard() {
-        return board;
+    public int getIndex() {
+        return INDEX;
     }
 
-    public void updateBoard(int index, int stones) {
-        board[index] = stones;
+    public int getStone() {
+        return stone;
     }
 
-    public void displayBoard() {
-        // Implement board display logic
+    public String getPosition() {
+        return POSITION;
     }
+
+
+
 }

@@ -1,36 +1,39 @@
 package bS;
 
-public class NormalSpiel {
-    private Holes holes;
-    private Score score;
-    private boolean isPlayer1Turn;
+import java.util.ArrayList;
 
-    public NormalSpiel() {
-        this.holes = new Holes(4);  // 4 stones per hole by default
-        this.score = new Score();
-        this.isPlayer1Turn = true;
+// This class will later rename to BohnenModel!!!
+
+public class NormalSpiel {
+    private ArrayList<Player> playerList;
+    private Board board;
+    private int playerIndex;
+
+
+    protected  NormalSpiel() {
+        playerIndex = 0;
     }
 
     public void startGame() {
-        // Game loop implementation
-        while (!isGameOver()) {
-            holes.displayBoard();
-            if (isPlayer1Turn) {
-                playTurn(1);
-            } else {
-                playTurn(2);
-            }
-            isPlayer1Turn = !isPlayer1Turn;
+        board = new Board();
+
+        playerList = new ArrayList<Player>();
+        for (int i = 0; i <= 1; i++){
+            playerList.add(new Player("Player "+ (i + 1) , 0));
         }
-        score.displayScores();
     }
 
-    private void playTurn(int player) {
-        // Implement game logic, similar to previous implementation
+    public void printBoard(){
+        System.out.println("Player list");
+        for(int i = 0; i < playerList.size(); i++){
+            System.out.println(playerList.get(i).getName() + "; " + playerList.get(i).getScore());
+        }
+        System.out.println("Holes list");
+        for(int i = 0; i < board.getHolesList().size(); i++){
+            System.out.println(board.getHolesList().get(i).getIndex()+ "; " 
+                            + board.getHolesList().get(i).getPosition() + "; "
+                            + board.getHolesList().get(i).getStone());
+        }
     }
 
-    private boolean isGameOver() {
-        // Implement game over check logic
-        return false;
-    }
 }
