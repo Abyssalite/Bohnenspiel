@@ -104,7 +104,7 @@ public class NormalSpiel {
                             + board.getHolesList().get(i).getStone());
         }
 
-        // Mock pick and place rock
+        // Mock pick and place stones
         if(currentPlayer.getPosition() == "B")
             loopHole(2);
         else

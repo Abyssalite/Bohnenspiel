@@ -11,6 +11,7 @@ public class Board {
             for (int i = 0; i <= 13; i++){
                 if(i < 7){
                     if ((i % 7) != 0) {
+                        // Stone 20 for testing should be 4
                         holesList.add(new Holes(20, i  ,"B_"+ (i % 7))) ;
                     }
                     else {
@@ -20,6 +21,7 @@ public class Board {
                 
                 else{
                     if ((i % 7) != 0) {
+                        // Stone 20 for testing should be 4
                         holesList.add(new Holes(20, i  ,"R_"+ ((i - j) % 7))) ;
                     }
                     else {
