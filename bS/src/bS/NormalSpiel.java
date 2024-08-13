@@ -1,5 +1,4 @@
 package bS;
-
 import java.util.ArrayList;
 
 // This class will later rename to BohnenModel!!!
@@ -8,7 +7,6 @@ public class NormalSpiel {
     private ArrayList<Player> playerList;
     private Board board;
     private int playerIndex;
-
 
     protected  NormalSpiel() {
         playerIndex = 0;

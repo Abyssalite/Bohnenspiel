@@ -28,4 +28,5 @@ public class Menu {
         // Implement user input logic
         return 1;  // Placeholder
     }
+    
 }

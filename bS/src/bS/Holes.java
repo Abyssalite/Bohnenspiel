@@ -23,6 +23,4 @@ public class Holes {
         return POSITION;
     }
 
-
-
 }
