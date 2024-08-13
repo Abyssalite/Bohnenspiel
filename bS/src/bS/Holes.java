@@ -23,4 +23,11 @@ public class Holes {
         return POSITION;
     }
 
+    public void setStone(int amount) {
+        if (amount == 0)
+            stone = amount;
+        else
+            stone += amount;
+    }
+
 }

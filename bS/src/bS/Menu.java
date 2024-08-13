@@ -9,8 +9,11 @@ public class Menu {
         int choice = getUserInput();
         switch (choice) {
             case 1:
+                // Placeholder, player name can be inputed at the game start
+                String[] player = {"Anastasia" , "Huy"};
+                
                 NormalSpiel normalSpiel = new NormalSpiel();
-                normalSpiel.startGame();
+                normalSpiel.startGame(player);
                 normalSpiel.printBoard();
                 break;
 
@@ -28,5 +31,5 @@ public class Menu {
         // Implement user input logic
         return 1;  // Placeholder
     }
-    
+
 }
