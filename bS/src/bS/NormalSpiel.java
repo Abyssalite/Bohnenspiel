@@ -32,12 +32,10 @@ public class NormalSpiel {
     }
 
     public void changePlayer(){
-        
         playerIndex++;
 		if (playerIndex >= playerList.size()) 
             playerIndex = 0;
 
-        System.out.println(playerIndex);
         currentPlayer = playerList.get(playerIndex);
         
     }
@@ -78,6 +76,7 @@ public class NormalSpiel {
                 }
                 else if(position[0].equals(currentPlayer.getPosition())){
                     board.getHolesList().get(selectedIndex + j).setStone(1); 
+                    currentPlayer.setScore(board.getHolesList().get(selectedIndex + j).getStone()); 
                 }
                 else{
                     selectedIndex = 0;
@@ -97,7 +96,7 @@ public class NormalSpiel {
             System.out.println(playerList.get(i).getName() + "; " + playerList.get(i).getScore() + "; " + playerList.get(i).getPosition());
         }
 
-        // Print player
+        // Print Holes
         System.out.println("Holes list");
         for(int i = 0; i < board.getHolesList().size(); i++){
             System.out.println(board.getHolesList().get(i).getIndex()+ "; " 
@@ -120,7 +119,7 @@ public class NormalSpiel {
 
         // Mock change player
         while (true) {
-            int zahl = Integer.parseInt(JOptionPane.showInputDialog("1 to change player; else"));
+            int zahl = Integer.parseInt(JOptionPane.showInputDialog("1 to change player; else 0"));
 				if (zahl == 1)
                     changePlayer();
 
