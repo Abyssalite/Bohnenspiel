@@ -68,32 +68,18 @@ public class BohnenView extends JFrame implements ICustomButton{
 
 
 		// Tasten erstellen
+        for(Map.Entry<String, JButton> entry : menuButtonMap.entrySet()){
+            entry.getValue().setFont(new Font("Arial", Font.BOLD, 50));
+            entry.getValue().setBackground(Color.BLACK);
+            entry.getValue().setForeground(Color.WHITE);
+            entry.getValue().setContentAreaFilled(false);
+            entry.getValue().setBorderPainted(false);
+            entry.getValue().setFocusPainted(false);
+            entry.getValue().setOpaque(false);
+        }
 		startBtn.setBounds(301, 384, 303, 102);
-		startBtn.setFont(new Font("Arial", Font.BOLD, 50));
-        startBtn.setBackground(Color.BLACK);
-        startBtn.setForeground(Color.WHITE);
-        startBtn.setContentAreaFilled(false);
-        startBtn.setBorderPainted(false);
-        startBtn.setFocusPainted(false);
-		startBtn.setOpaque(false);
-
 		debugBtn.setBounds(301, 517, 303, 102);
-		debugBtn.setFont(new Font("Arial", Font.BOLD, 50));
-        debugBtn.setBackground(Color.BLACK);
-        debugBtn.setForeground(Color.WHITE);
-        debugBtn.setContentAreaFilled(false);
-        debugBtn.setBorderPainted(false);
-        debugBtn.setFocusPainted(false);
-		debugBtn.setOpaque(false);
-
 		quitBtn.setBounds(301, 647, 303, 102);
-		quitBtn.setFont(new Font("Arial", Font.BOLD, 50));
-        quitBtn.setBackground(Color.BLACK);
-        quitBtn.setForeground(Color.WHITE);
-        quitBtn.setContentAreaFilled(false);
-        quitBtn.setBorderPainted(false);
-        quitBtn.setFocusPainted(false);
-		quitBtn.setOpaque(false);
 
 		// Set ActionCommand
 		startBtn.setActionCommand("startBtn");
