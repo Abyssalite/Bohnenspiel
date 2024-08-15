@@ -66,20 +66,20 @@ public class NormalSpiel {
         for(int i = 0; i <= loop; i++){
            System.out.println(subStep[i]);
             for(int j = 1; j <= subStep[i]; j++){
-                String[] position = board.getHolesList().get(selectedIndex + j).getPosition().split("_");
+
+                currentHole = board.getHolesList().get(selectedIndex + j);
+                String[] position = currentHole.getPosition().split("_");
                 
-                if(!position[1].equals("0")){
-                    currentHole = board.getHolesList().get(selectedIndex + j);
+                if(!position[1].equals("0")){     
                     currentHole.setStone(1);
                 }
                 else if(position[0].equals(currentPlayer.getPosition())){
-                    currentHole = board.getHolesList().get(selectedIndex + j); 
                     currentHole.setStone(1);
                     currentPlayer.setScore(board.getHolesList().get(selectedIndex + j).getStone()); 
                 }
                 else{
                     selectedIndex = 0;
-                    currentHole = board.getHolesList().get(selectedIndex + j );
+                    currentHole = board.getHolesList().get(selectedIndex + j);
                     currentHole.setStone(1);
                 }
             }
