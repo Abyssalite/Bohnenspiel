@@ -1,7 +1,6 @@
 package bS;
 import java.util.ArrayList;
 import java.util.Random;
-import javax.swing.JOptionPane;
 
 // This class will later rename to BohnenModel!!!
 
@@ -117,7 +116,7 @@ public class NormalSpiel {
                             + board.getHolesList().get(i).getStone());
         }
 
-        // Mock change player
+        /*/ Mock change player
         while (true) {
             int zahl = Integer.parseInt(JOptionPane.showInputDialog("1 to change player; else 0"));
 				if (zahl == 1)
@@ -125,7 +124,7 @@ public class NormalSpiel {
 
             System.out.println(currentPlayer.getName());
 
-        }
+        }*/
     }
 
 }
