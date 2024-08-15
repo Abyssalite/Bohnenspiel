@@ -4,10 +4,9 @@ import bS.BohnenView.TitleScreen;
 
 public class Main {
     public static void main(String[] args) {
-        Menu menu = new Menu();
+        BohnenModel model = new BohnenModel();
         TitleScreen view = new TitleScreen();
-        menu.displayMenu();
-        
+        BohnenController controller = new BohnenController(model, view);
     }
     
 }

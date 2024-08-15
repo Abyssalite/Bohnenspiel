@@ -11,7 +11,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 
 import java.util.LinkedHashMap;
@@ -112,7 +111,7 @@ public class TitleScreen extends JFrame implements ICustomButton{
 	}
 
 	// actionListener für die Titelbildschirm
-	protected void menuActionListener(ActionListener evt) {
+	public void titleActionListener(ActionListener evt) {
 		startBtn.addActionListener(evt);
 		debugBtn.addActionListener(evt);
         quitBtn.addActionListener(evt);
