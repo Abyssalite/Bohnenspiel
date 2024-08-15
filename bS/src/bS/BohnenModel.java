@@ -15,10 +15,10 @@ public class BohnenModel {
     Random rand = new Random();
 
     protected  BohnenModel() {
-        playerIndex = rand.nextInt(2);
     }
 
     protected void startGame(String[] player, boolean isDebug) {
+        playerIndex = rand.nextInt(2);
         board = new Board();
         this.isDebug = isDebug;
 
@@ -92,6 +92,7 @@ public class BohnenModel {
 
     // Test function only tobe delete
     public void printBoard(){
+        System.out.println("Debug " + isDebug);
         // Print player
         System.out.println("Player list");
         for(int i = 0; i < playerList.size(); i++){
