@@ -1,9 +1,11 @@
 package bS;
 
+import bS.BohnenView.TitleScreen;
+
 public class Main {
     public static void main(String[] args) {
         Menu menu = new Menu();
-        BohnenView view = new BohnenView();
+        TitleScreen view = new TitleScreen();
         menu.displayMenu();
         
     }

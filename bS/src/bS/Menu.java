@@ -1,7 +1,7 @@
 package bS;
 
 public class Menu {
-    public void displayMenu() {
+    protected void displayMenu() {
         // Code to display menu and get user input
 
         // This function will later move to GUI!!!
@@ -27,7 +27,7 @@ public class Menu {
         }
     }
 
-    private int getUserInput() {
+    protected int getUserInput() {
         // Implement user input logic
         return 1;  // Placeholder
     }

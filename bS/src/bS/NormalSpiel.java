@@ -16,7 +16,7 @@ public class NormalSpiel {
         playerIndex = rand.nextInt(2);
     }
 
-    public void startGame(String[] player) {
+    protected void startGame(String[] player) {
         board = new Board();
 
         playerList = new ArrayList<Player>();
@@ -30,7 +30,7 @@ public class NormalSpiel {
 
     }
 
-    public void changePlayer(){
+    protected void changePlayer(){
         playerIndex++;
 		if (playerIndex >= playerList.size()) 
             playerIndex = 0;
@@ -40,7 +40,7 @@ public class NormalSpiel {
     }
 
     // it's a loopHole alright Q.Q
-    public void loopHole(int selectedIndex){
+    protected void loopHole(int selectedIndex){
         currentHole = board.getHolesList().get(selectedIndex);
         int step = currentHole.getStone();
         int loop = 0;

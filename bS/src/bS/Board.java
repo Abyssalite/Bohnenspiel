@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Board {
     	private ArrayList<Holes> holesList;
 
-        public Board(){
+        protected Board(){
             holesList = new ArrayList<Holes>();
             int j = 0;
 
@@ -32,7 +32,7 @@ public class Board {
             }
         }
 
-        public ArrayList<Holes> getHolesList(){
+        protected ArrayList<Holes> getHolesList(){
             return holesList;
         }
 

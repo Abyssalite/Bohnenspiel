@@ -5,25 +5,25 @@ public class Holes {
 	private final String  POSITION;
     private int stone;
 
-    public Holes(int stone, int index, String position) {
+    protected Holes(int stone, int index, String position) {
        this.INDEX = index;
        this.POSITION = position;
        this.stone = stone;
     }
 
-    public int getIndex() {
+    protected int getIndex() {
         return INDEX;
     }
 
-    public int getStone() {
+    protected int getStone() {
         return stone;
     }
 
-    public String getPosition() {
+    protected String getPosition() {
         return POSITION;
     }
 
-    public void setStone(int amount) {
+    protected void setStone(int amount) {
         if (amount == 0)
             stone = amount;
         else
