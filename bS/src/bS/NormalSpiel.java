@@ -48,21 +48,18 @@ public class NormalSpiel {
         int[] subStep = new int[5];
         currentHole.setStone(0);
 
-        if(selectedIndex + step >= 14){
+        subStep[loop] =  Math.min((13 - selectedIndex), step);
+        step -= (13 - selectedIndex);
 
-            subStep[loop] =  13 - selectedIndex;
-            step -= 13 - selectedIndex;
-
-            while(step > 0){
-                loop++;
-                if(step  < 14){
-                    subStep[loop] = step;
-                    step = 0;
-                }
-                else {
-                    subStep[loop] = 13;
-                    step -= 13;
-                }
+        while(step > 0){
+            loop++;
+            if(step  < 14){
+                subStep[loop] = step;
+                step = 0;
+            }
+            else {
+                subStep[loop] = 13;
+                step -= 13;
             }
         }
 
@@ -72,15 +69,18 @@ public class NormalSpiel {
                 String[] position = board.getHolesList().get(selectedIndex + j).getPosition().split("_");
                 
                 if(!position[1].equals("0")){
-                    board.getHolesList().get(selectedIndex + j).setStone(1);
+                    currentHole = board.getHolesList().get(selectedIndex + j);
+                    currentHole.setStone(1);
                 }
                 else if(position[0].equals(currentPlayer.getPosition())){
-                    board.getHolesList().get(selectedIndex + j).setStone(1); 
+                    currentHole = board.getHolesList().get(selectedIndex + j); 
+                    currentHole.setStone(1);
                     currentPlayer.setScore(board.getHolesList().get(selectedIndex + j).getStone()); 
                 }
                 else{
                     selectedIndex = 0;
-                    board.getHolesList().get(selectedIndex + j ).setStone(1);
+                    currentHole = board.getHolesList().get(selectedIndex + j );
+                    currentHole.setStone(1);
                 }
             }
             selectedIndex = -1;

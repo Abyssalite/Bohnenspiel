@@ -12,7 +12,7 @@ public class Board {
                 if(i < 7){
                     if ((i % 7) != 0) {
                         // Stone 20 for testing should be 4
-                        holesList.add(new Holes(20, i  ,"B_"+ (i % 7))) ;
+                        holesList.add(new Holes(4, i  ,"B_"+ (i % 7))) ;
                     }
                     else {
                         holesList.add(new Holes(0, i  ,"R_"+ (i % 7))) ;
@@ -22,7 +22,7 @@ public class Board {
                 else{
                     if ((i % 7) != 0) {
                         // Stone 20 for testing should be 4
-                        holesList.add(new Holes(20, i  ,"R_"+ ((i - j) % 7))) ;
+                        holesList.add(new Holes(4, i  ,"R_"+ ((i - j) % 7))) ;
                     }
                     else {
                         holesList.add(new Holes(0, i  ,"B_"+ ((i - j) % 7))) ;
