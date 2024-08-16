@@ -24,7 +24,7 @@ public class NameInput extends JDialog{
 
 	public NameInput() {
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize(); 
-        int width = (int) (size.getWidth() * 0.30);
+        int width = (int) (size.getWidth() * 0.32);
         int height = (int) (size.getHeight() * 0.30);
 
 		setTitle("Name Input");

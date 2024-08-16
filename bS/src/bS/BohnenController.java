@@ -62,8 +62,9 @@ class NameInputController implements ActionListener {
         String actionEvent = evt.getActionCommand();
         switch (actionEvent) {
             case "okBtn": {
-                model.startGame(view.getPlayerName(), isDebug);
-                model.printBoard();
+                model.startGame(view.getPlayerName(), isDebug); // Will be changed to actual game UI
+                model.printBoard(); // Will be changed to actual game UI
+
                 //parent.setVisible(false);
                 view.dispose();
                 break;
