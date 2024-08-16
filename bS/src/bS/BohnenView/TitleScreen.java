@@ -11,12 +11,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-
 
 public class TitleScreen extends JFrame implements ICustomButton{
     private JPanel menuPanel;
@@ -55,7 +53,6 @@ public class TitleScreen extends JFrame implements ICustomButton{
         TitleButtonMap.put("debugBtn", debugBtn = new JButton("Debug"));
         TitleButtonMap.put("quitBtn", quitBtn = new JButton("Quit"));
 
-
 		// Titelbildschirm erstellen
 		menuPanel = new JPanel();
 		menuPanel.setPreferredSize(new Dimension(width, height));
@@ -66,9 +63,8 @@ public class TitleScreen extends JFrame implements ICustomButton{
 		backgroundLabel.setIcon(imageIcon);
 		backgroundLabel.setBounds(0, 0, width, height);
 
-
 		// Tasten erstellen
-        for(Map.Entry<String, JButton> button : TitleButtonMap.entrySet()){
+        for(Map.Entry<String, JButton> button : TitleButtonMap.entrySet()) {
             button.getValue().setFont(new Font("Arial", Font.BOLD, 50));
             button.getValue().setBackground(Color.BLACK);
             button.getValue().setForeground(Color.WHITE);
@@ -86,7 +82,7 @@ public class TitleScreen extends JFrame implements ICustomButton{
         debugBtn.setActionCommand("debugBtn");
         quitBtn.setActionCommand("quitBtn");
 
-        for(Map.Entry<String, JButton> button : TitleButtonMap.entrySet()){
+        for(Map.Entry<String, JButton> button : TitleButtonMap.entrySet()) {
             button.getValue().addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent e) {
@@ -112,13 +108,13 @@ public class TitleScreen extends JFrame implements ICustomButton{
 	}
 
 	// actionListener für die Titelbildschirm
-	protected void menuActionListener(ActionListener evt) {
+	public void titleActionListener(ActionListener evt) {
 		startBtn.addActionListener(evt);
 		debugBtn.addActionListener(evt);
         quitBtn.addActionListener(evt);
 	}
 
-    protected LinkedHashMap<String, JButton> getButtonMap(){
+    protected LinkedHashMap<String, JButton> getButtonMap() {
         return TitleButtonMap;
     }
     

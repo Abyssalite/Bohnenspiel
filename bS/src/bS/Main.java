@@ -7,7 +7,6 @@ public class Main {
         Menu menu = new Menu();
         TitleScreen view = new TitleScreen();
         menu.displayMenu();
-        
     }
     
 }
