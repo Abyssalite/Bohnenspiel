@@ -4,12 +4,12 @@ import java.util.ArrayList;
 public class Board {
     	private ArrayList<Holes> holesList;
 
-        public Board(){
+        protected Board() {
             holesList = new ArrayList<Holes>();
             int j = 0;
 
-            for (int i = 0; i <= 13; i++){
-                if(i < 7){
+            for (int i = 0; i <= 13; i++) {
+                if(i < 7) {
                     if ((i % 7) != 0) {
                         // Stone 20 for testing should be 4
                         holesList.add(new Holes(4, i  ,"B_"+ (i % 7))) ;
@@ -32,7 +32,7 @@ public class Board {
             }
         }
 
-        public ArrayList<Holes> getHolesList(){
+        protected ArrayList<Holes> getHolesList() {
             return holesList;
         }
 

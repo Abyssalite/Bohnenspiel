@@ -5,27 +5,26 @@ public class Player {
 	private final String NAME;
 	private int score;
 
-	public Player(String name, int score, String position) {
+	protected Player(String name, int score, String position) {
 		this.NAME = name;
 		this.score = score;
         this.POSITION = position;
 	} 
 
-    public String getPosition(){
+    protected String getPosition() {
         return POSITION;
     }
 
-    public String getName(){
+    protected String getName() {
         return NAME;
     }
 
-    public int getScore(){
+    protected int getScore() {
         return score;
     }
 
-    public void setScore(int score){
+    protected void setScore(int score) {
         this.score = score;
     }
 
 }
-
