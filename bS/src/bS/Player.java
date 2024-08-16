@@ -11,19 +11,19 @@ public class Player {
         this.POSITION = position;
 	} 
 
-    protected String getPosition(){
+    protected String getPosition() {
         return POSITION;
     }
 
-    protected String getName(){
+    protected String getName() {
         return NAME;
     }
 
-    protected int getScore(){
+    protected int getScore() {
         return score;
     }
 
-    protected void setScore(int score){
+    protected void setScore(int score) {
         this.score = score;
     }
 

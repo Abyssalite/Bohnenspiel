@@ -34,7 +34,6 @@ public class NameInput extends JDialog{
 		setLocation(width, height);
         setModal(true);
 		pack();
-
 	}
 
 	private JPanel NameInputPanel() {
@@ -101,8 +100,9 @@ public class NameInput extends JDialog{
 		clrBtn.addActionListener(evt);
 	}
 
-    public String[] getPlayerName(){
+    public String[] getPlayerName() {
         String[] playerName = {textField1.getText(), textField2.getText()};
         return playerName;
     }
+
 }

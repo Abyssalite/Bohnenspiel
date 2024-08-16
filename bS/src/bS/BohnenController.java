@@ -4,7 +4,6 @@ import java.awt.event.ActionListener;
 
 import bS.BohnenView.*;
 
-
 public class BohnenController implements ActionListener {
     private BohnenModel model;
 	private TitleScreen view;
@@ -22,15 +21,14 @@ public class BohnenController implements ActionListener {
         switch (actionEvent) {
             case "startBtn":{
                 nameInput = new NameInput();
-                NameInputController nameInputController = new NameInputController(model, nameInput, false);
+                NameInputController nameInputController = new NameInputController(model, nameInput, view, false);
                 nameInput.nameActionListener(nameInputController); 
                 nameInput.setVisible(true);
-
                 break;                
             }
             case "debugBtn":{
                 nameInput = new NameInput();
-                NameInputController nameInputController = new NameInputController(model, nameInput, true);
+                NameInputController nameInputController = new NameInputController(model, nameInput, view, true);
                 nameInput.nameActionListener(nameInputController); 
                 nameInput.setVisible(true);
                 break;                         
@@ -50,12 +48,13 @@ public class BohnenController implements ActionListener {
 class NameInputController implements ActionListener {
 	private BohnenModel model;
 	private NameInput view;
+    private TitleScreen parent;
     protected boolean isDebug;
 
-
-    protected  NameInputController(BohnenModel model, NameInput view, boolean isDebug){
+    protected  NameInputController(BohnenModel model, NameInput view, TitleScreen parent, boolean isDebug) {
         this.model = model;
         this.view = view;
+        this.parent = parent;
         this.isDebug = isDebug;
     }
 
@@ -65,6 +64,8 @@ class NameInputController implements ActionListener {
             case "okBtn": {
                 model.startGame(view.getPlayerName(), isDebug);
                 model.printBoard();
+                //parent.setVisible(false);
+                view.dispose();
                 break;
             }
             case "clrBtn": {
@@ -73,4 +74,5 @@ class NameInputController implements ActionListener {
             }
         }
     }
+
 }

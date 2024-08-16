@@ -2,8 +2,6 @@ package bS;
 import java.util.ArrayList;
 import java.util.Random;
 
-// This class will later rename to BohnenModel!!!
-
 public class BohnenModel {
     private ArrayList<Player> playerList;
     private Board board;
@@ -23,27 +21,25 @@ public class BohnenModel {
         this.isDebug = isDebug;
 
         playerList = new ArrayList<Player>();
-        for (int i = 0; i <= 1; i++){
+        for (int i = 0; i <= 1; i++) {
             if(i == 0)
                 playerList.add(new Player(player[i] , 0, "R"));
             else
                 playerList.add(new Player(player[i] , 0, "B"));
         }
         currentPlayer = playerList.get(playerIndex);
-
     }
 
-    protected void changePlayer(){
+    protected void changePlayer() {
         playerIndex++;
 		if (playerIndex >= playerList.size()) 
             playerIndex = 0;
 
         currentPlayer = playerList.get(playerIndex);
-        
     }
 
     // it's a loopHole alright Q.Q
-    protected void loopHole(int selectedIndex){
+    protected void loopHole(int selectedIndex) {
         currentHole = board.getHolesList().get(selectedIndex);
         int step = currentHole.getStone();
         int loop = 0;
@@ -53,9 +49,9 @@ public class BohnenModel {
         subStep[loop] =  Math.min((13 - selectedIndex), step);
         step -= (13 - selectedIndex);
 
-        while(step > 0){
+        while(step > 0) {
             loop++;
-            if(step  < 14){
+            if(step  < 14) {
                 subStep[loop] = step;
                 step = 0;
             }
@@ -65,17 +61,17 @@ public class BohnenModel {
             }
         }
 
-        for(int i = 0; i <= loop; i++){
+        for(int i = 0; i <= loop; i++) {
            System.out.println(subStep[i]);
-            for(int j = 1; j <= subStep[i]; j++){
+            for(int j = 1; j <= subStep[i]; j++) {
 
                 currentHole = board.getHolesList().get(selectedIndex + j);
                 String[] position = currentHole.getPosition().split("_");
                 
-                if(!position[1].equals("0")){     
+                if(!position[1].equals("0")) {     
                     currentHole.setStone(1);
                 }
-                else if(position[0].equals(currentPlayer.getPosition())){
+                else if(position[0].equals(currentPlayer.getPosition())) {
                     currentHole.setStone(1);
                     currentPlayer.setScore(board.getHolesList().get(selectedIndex + j).getStone()); 
                 }
@@ -87,21 +83,20 @@ public class BohnenModel {
             }
             selectedIndex = -1;
         }
-
     }
 
     // Test function only tobe delete
-    public void printBoard(){
+    public void printBoard() {
         System.out.println("Debug " + isDebug);
         // Print player
         System.out.println("Player list");
-        for(int i = 0; i < playerList.size(); i++){
+        for(int i = 0; i < playerList.size(); i++) {
             System.out.println(playerList.get(i).getName() + "; " + playerList.get(i).getScore() + "; " + playerList.get(i).getPosition());
         }
 
         // Print Holes
         System.out.println("Holes list");
-        for(int i = 0; i < board.getHolesList().size(); i++){
+        for(int i = 0; i < board.getHolesList().size(); i++) {
             System.out.println(board.getHolesList().get(i).getIndex()+ "; " 
                             + board.getHolesList().get(i).getPosition() + "; "
                             + board.getHolesList().get(i).getStone());
@@ -114,7 +109,7 @@ public class BohnenModel {
             loopHole(11);
 
         System.out.println(currentPlayer.getName() + "; " + currentPlayer.getScore() + "; " + currentPlayer.getPosition());
-        for(int i = 0; i < board.getHolesList().size(); i++){
+        for(int i = 0; i < board.getHolesList().size(); i++) {
             System.out.println(board.getHolesList().get(i).getIndex()+ "; " 
                             + board.getHolesList().get(i).getPosition() + "; "
                             + board.getHolesList().get(i).getStone());
