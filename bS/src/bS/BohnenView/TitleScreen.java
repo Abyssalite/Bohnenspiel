@@ -48,11 +48,6 @@ public class TitleScreen extends JFrame implements ICustomButton{
 	}
 
 	private JPanel titelPanel(int width, int height)  {
-        TitleButtonMap = new LinkedHashMap<String, JButton>();
-        TitleButtonMap.put("startBtn", startBtn = new JButton("Start"));
-        TitleButtonMap.put("debugBtn", debugBtn = new JButton("Debug"));
-        TitleButtonMap.put("quitBtn", quitBtn = new JButton("Quit"));
-
 		// Titelbildschirm erstellen
 		menuPanel = new JPanel();
 		menuPanel.setPreferredSize(new Dimension(width, height));
@@ -60,10 +55,17 @@ public class TitleScreen extends JFrame implements ICustomButton{
 
         backgroundLabel = new JLabel();
 		imageIcon = new ImageIcon("Menu.png");
+        backgroundLabel.setVerticalAlignment(1);
+        backgroundLabel.setHorizontalAlignment(2);
 		backgroundLabel.setIcon(imageIcon);
 		backgroundLabel.setBounds(0, 0, width, height);
 
-		// Tasten erstellen
+        // Tasten erstellen
+        TitleButtonMap = new LinkedHashMap<String, JButton>();
+        TitleButtonMap.put("startBtn", startBtn = new JButton("Start"));
+        TitleButtonMap.put("debugBtn", debugBtn = new JButton("Debug"));
+        TitleButtonMap.put("quitBtn", quitBtn = new JButton("Quit"));
+
         for(Map.Entry<String, JButton> button : TitleButtonMap.entrySet()) {
             button.getValue().setFont(new Font("Arial", Font.BOLD, 50));
             button.getValue().setBackground(Color.BLACK);
@@ -73,9 +75,9 @@ public class TitleScreen extends JFrame implements ICustomButton{
             button.getValue().setFocusPainted(false);
             button.getValue().setOpaque(false);
         }
-		startBtn.setBounds(301, 384, 303, 102);
-		debugBtn.setBounds(301, 517, 303, 102);
-		quitBtn.setBounds(301, 647, 303, 102);
+		startBtn.setBounds(301, 421, 303, 102);
+		debugBtn.setBounds(301, 554, 303, 102);
+		quitBtn.setBounds(301, 684, 303, 102);
 
 		// Set ActionCommand
 		startBtn.setActionCommand("startBtn");
