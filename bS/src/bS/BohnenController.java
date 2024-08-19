@@ -43,7 +43,6 @@ public class BohnenController implements ActionListener {
 }
 
 class NameInputController implements ActionListener {
-	private BohnenModel model;
 	private NameInput view;
     private TitleScreen parent;
     private GameBoard gameBoard;
@@ -59,13 +58,11 @@ class NameInputController implements ActionListener {
         String actionEvent = evt.getActionCommand();
         switch (actionEvent) {
             case "okBtn": {
-                model = new BohnenModel();
                 view.dispose();
                 parent.setVisible(false);
 
                 gameBoard = new GameBoard(ISDEBUG);
-                model.startGame(view.getPlayerName(), ISDEBUG);
-                GameBoardController gameBoardController = new GameBoardController(model, gameBoard, parent);
+                GameBoardController gameBoardController = new GameBoardController(gameBoard, parent, ISDEBUG, view.getPlayerName());
                 gameBoard.boardActionListener(gameBoardController); 
                 gameBoard.setVisible(true);
   
@@ -80,15 +77,21 @@ class NameInputController implements ActionListener {
 
 }
 
-class GameBoardController implements ActionListener, IUpdateBoard{
+class GameBoardController implements ActionListener, IUpdateBoard, ICustomButton{
     private BohnenModel model;
     private TitleScreen parent;
     private GameBoard view;
+    private final boolean ISDEBUG;
+    private String[] players;
     
-    protected  GameBoardController(BohnenModel model, GameBoard view, TitleScreen parent) {
-        this.model = model;
+    protected  GameBoardController(GameBoard view, TitleScreen parent, boolean isDebug, String[] players) {
         this.view = view;
         this.parent = parent;
+        this.ISDEBUG = isDebug;
+        this.players = players;
+
+        model = new BohnenModel();
+        model.startGame(players, ISDEBUG);
         init(view.getPlayerElements(), model.getPlayerList());
     }
 
@@ -107,13 +110,14 @@ class GameBoardController implements ActionListener, IUpdateBoard{
             }
             case "restartBtn": {
                 this.model = new BohnenModel();
+                model.startGame(players, ISDEBUG);
+                init(view.getPlayerElements(), model.getPlayerList());
                 break;
             }
             case "startBtn": {
                 break;
             }
         }
- 
     }
 
 }
