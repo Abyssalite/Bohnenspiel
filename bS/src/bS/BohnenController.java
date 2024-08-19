@@ -105,7 +105,7 @@ class GameBoardController implements ActionListener, IUpdateBoard, ICustomButton
             }
             case "menuBtn": {
                 view.dispose();
-                parent.setVisible(true);;
+                parent.setVisible(true);
                 break;
             }
             case "restartBtn": {

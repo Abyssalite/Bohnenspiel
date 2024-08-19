@@ -78,19 +78,19 @@ public class GameBoard extends JFrame implements ICustomButton{
         playerElements.add(player1Score = new JLabel("", JLabel.CENTER));
         playerElements.add(player2Score = new JLabel("", JLabel.CENTER));
 
-        player1Name.setBounds(355, 380, 200, 60);
+        player1Name.setBounds(355, 380, 320, 60);
         player1Name.setForeground(Color.WHITE);
-        player1Name.setFont(new Font( "Arial", Font.BOLD, 42));
+        player1Name.setFont(new Font( "Arial", Font.BOLD, 40));
 
-        player1Score.setBounds(675, 380, 200, 60);
+        player1Score.setBounds(750, 380, 60, 60);
         player1Score.setForeground(Color.WHITE);
         player1Score.setFont(new Font( "Arial", Font.BOLD, 45));
 
-        player2Name.setBounds(1130, 830, 200, 60);
+        player2Name.setBounds(1130, 830, 320, 60);
         player2Name.setForeground(Color.WHITE);
-        player2Name.setFont(new Font( "Arial", Font.BOLD, 42));
+        player2Name.setFont(new Font( "Arial", Font.BOLD, 40));
 
-        player2Score.setBounds(1455, 830, 200, 60);
+        player2Score.setBounds(1525, 830, 60, 60);
         player2Score.setForeground(Color.WHITE);
         player2Score.setFont(new Font( "Arial", Font.BOLD, 45));
 
