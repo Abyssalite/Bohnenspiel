@@ -15,7 +15,7 @@ public class Holes {
         return INDEX;
     }
 
-    protected int getStone() {
+    public int getStone() {
         return stone;
     }
 

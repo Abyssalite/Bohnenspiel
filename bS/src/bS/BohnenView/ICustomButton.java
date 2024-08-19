@@ -1,6 +1,7 @@
 package bS.BohnenView;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import javax.swing.JButton;
 
@@ -18,6 +19,24 @@ public interface ICustomButton {
             }
             case "pressed":{
                 buttons.get(object).setForeground(Color.RED);;
+                break;
+            }
+            default:
+                break;
+        }
+    }
+
+    public default void highlineHole(ArrayList<JButton> buttons, int index, String command) {
+        switch (command) {
+            case "enter":{
+                if (index > 0 && index < 8)
+                    buttons.get(index).setForeground(Color.BLUE);
+                else
+                    buttons.get(index).setForeground(Color.RED);
+                break;
+            }
+            case "exit":{
+                buttons.get(index).setForeground(Color.WHITE);;
                 break;
             }
             default:

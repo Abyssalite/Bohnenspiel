@@ -21,8 +21,8 @@ public class BohnenModel {
         this.isDebug = isDebug;
 
         playerList = new ArrayList<Player>();
-        playerList.add(new Player(player[0] , 0, "R"));
-        playerList.add(new Player(player[1] , 0, "B"));
+        playerList.add(new Player(player[0] , 0, "R", 0));
+        playerList.add(new Player(player[1] , 0, "B", 1));
         currentPlayer = playerList.get(playerIndex);
     }
 
@@ -58,7 +58,7 @@ public class BohnenModel {
         }
 
         for(int i = 0; i <= loop; i++) {
-           System.out.println(subStep[i]);
+                            System.out.println(subStep[i]);
             for(int j = 1; j <= subStep[i]; j++) {
 
                 currentHole = board.getHolesList().get(selectedIndex + j);
@@ -67,15 +67,11 @@ public class BohnenModel {
                 if(!position[1].equals("0")) {     
                     currentHole.setStone(1);
                 }
-                else if(position[0].equals(currentPlayer.getPosition())) {
+                else  {
                     currentHole.setStone(1);
                     currentPlayer.setScore(board.getHolesList().get(selectedIndex + j).getStone()); 
                 }
-                else{
-                    selectedIndex = 0;
-                    currentHole = board.getHolesList().get(selectedIndex + j);
-                    currentHole.setStone(1);
-                }
+
             }
             selectedIndex = -1;
         }
@@ -85,45 +81,12 @@ public class BohnenModel {
         return playerList;
     }
 
-    // Test function only tobe delete
-    public void printBoard() {
-        System.out.println("Debug " + isDebug);
-        // Print player
-        System.out.println("Player list");
-        for(int i = 0; i < playerList.size(); i++) {
-            System.out.println(playerList.get(i).getName() + "; " + playerList.get(i).getScore() + "; " + playerList.get(i).getPosition());
-        }
+    protected ArrayList<Holes> getHoleList(){
+        return board.getHolesList();
+    }
 
-        // Print Holes
-        System.out.println("Holes list");
-        for(int i = 0; i < board.getHolesList().size(); i++) {
-            System.out.println(board.getHolesList().get(i).getIndex()+ "; " 
-                            + board.getHolesList().get(i).getPosition() + "; "
-                            + board.getHolesList().get(i).getStone());
-        }
-
-        // Mock pick and place stones
-        if(currentPlayer.getPosition() == "B")
-            loopHole(2);
-        else
-            loopHole(11);
-
-        System.out.println(currentPlayer.getName() + "; " + currentPlayer.getScore() + "; " + currentPlayer.getPosition());
-        for(int i = 0; i < board.getHolesList().size(); i++) {
-            System.out.println(board.getHolesList().get(i).getIndex()+ "; " 
-                            + board.getHolesList().get(i).getPosition() + "; "
-                            + board.getHolesList().get(i).getStone());
-        }
-
-        /*/ Mock change player
-        while (true) {
-            int zahl = Integer.parseInt(JOptionPane.showInputDialog("1 to change player; else 0"));
-				if (zahl == 1)
-                    changePlayer();
-
-            System.out.println(currentPlayer.getName());
-
-        }*/
+    protected Player getCurrentPlayer(){
+        return currentPlayer;
     }
 
 }

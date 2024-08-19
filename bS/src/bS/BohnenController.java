@@ -77,7 +77,7 @@ class NameInputController implements ActionListener {
 
 }
 
-class GameBoardController implements ActionListener, IUpdateBoard, ICustomButton{
+class GameBoardController implements ActionListener, IUpdateBoard{
     private BohnenModel model;
     private TitleScreen parent;
     private GameBoard view;
@@ -93,6 +93,7 @@ class GameBoardController implements ActionListener, IUpdateBoard, ICustomButton
         model = new BohnenModel();
         model.startGame(players, ISDEBUG);
         init(view.getPlayerElements(), model.getPlayerList());
+        update();
     }
 
     public void actionPerformed(ActionEvent evt) {
@@ -112,12 +113,24 @@ class GameBoardController implements ActionListener, IUpdateBoard, ICustomButton
                 this.model = new BohnenModel();
                 model.startGame(players, ISDEBUG);
                 init(view.getPlayerElements(), model.getPlayerList());
+                update();
+                
                 break;
             }
             case "startBtn": {
                 break;
             }
+            default:{
+                model.loopHole(Integer.parseInt(actionEvent));
+                update();
+            }
         }
+    }
+
+    private void update(){
+        highlinePlayer(view.getPlayerElements(), model.getCurrentPlayer());
+        updateStoneNumber(view.getHoleButton(),model.getHoleList());
+        disableButton(view.getHoleButton(), model.getCurrentPlayer());
     }
 
 }

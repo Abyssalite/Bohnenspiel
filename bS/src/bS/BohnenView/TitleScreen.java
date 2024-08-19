@@ -18,7 +18,7 @@ import java.util.Map;
 
 public class TitleScreen extends JFrame implements ICustomButton{
     private JPanel menuPanel;
-    private LinkedHashMap<String, JButton> TitleButtonMap;
+    private LinkedHashMap<String, JButton> titleButtonMap;
 	private JButton startBtn;
     private JButton debugBtn;
     private JButton quitBtn;
@@ -58,12 +58,12 @@ public class TitleScreen extends JFrame implements ICustomButton{
 		backgroundLabel.setBounds(0, 0, width, height);
 
         // Tasten erstellen
-        TitleButtonMap = new LinkedHashMap<String, JButton>();
-        TitleButtonMap.put("startBtn", startBtn = new JButton("Start"));
-        TitleButtonMap.put("debugBtn", debugBtn = new JButton("Debug"));
-        TitleButtonMap.put("quitBtn", quitBtn = new JButton("Quit"));
+        titleButtonMap = new LinkedHashMap<String, JButton>();
+        titleButtonMap.put("startBtn", startBtn = new JButton("Start"));
+        titleButtonMap.put("debugBtn", debugBtn = new JButton("Debug"));
+        titleButtonMap.put("quitBtn", quitBtn = new JButton("Quit"));
 
-        for(Map.Entry<String, JButton> button : TitleButtonMap.entrySet()) {
+        for(Map.Entry<String, JButton> button : titleButtonMap.entrySet()) {
             button.getValue().setFont(new Font("Arial", Font.BOLD, 50));
             button.getValue().setBackground(Color.BLACK);
             button.getValue().setForeground(Color.WHITE);
@@ -71,6 +71,22 @@ public class TitleScreen extends JFrame implements ICustomButton{
             button.getValue().setBorderPainted(false);
             button.getValue().setFocusPainted(false);
             button.getValue().setOpaque(false);
+
+            button.getValue().addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseEntered(MouseEvent e) {
+                    highlineButton(titleButtonMap, button.getKey(), "enter");
+                }
+                @Override
+	            public void mouseExited(MouseEvent e) {
+                    highlineButton(titleButtonMap, button.getKey(), "exit");
+	            }
+                @Override
+	            public void mousePressed(MouseEvent e) {
+                    highlineButton(titleButtonMap, button.getKey(), "pressed");
+	            }
+            });
+            menuPanel.add(button.getValue());
         }
 		startBtn.setBounds(301, 421, 303, 102);
 		debugBtn.setBounds(301, 554, 303, 102);
@@ -81,26 +97,6 @@ public class TitleScreen extends JFrame implements ICustomButton{
         debugBtn.setActionCommand("debugBtn");
         quitBtn.setActionCommand("quitBtn");
 
-        for(Map.Entry<String, JButton> button : TitleButtonMap.entrySet()) {
-            button.getValue().addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseEntered(MouseEvent e) {
-                    highlineButton(TitleButtonMap, button.getKey(), "enter");
-                }
-                @Override
-	            public void mouseExited(MouseEvent e) {
-                    highlineButton(TitleButtonMap, button.getKey(), "exit");
-	            }
-                @Override
-	            public void mousePressed(MouseEvent e) {
-                    highlineButton(TitleButtonMap, button.getKey(), "pressed");
-	            }
-            });
-        }
-
-		menuPanel.add(startBtn);
-        menuPanel.add(debugBtn);
-        menuPanel.add(quitBtn);
         menuPanel.add(backgroundLabel);
    
 		return menuPanel;
@@ -114,7 +110,7 @@ public class TitleScreen extends JFrame implements ICustomButton{
 	}
 
     protected LinkedHashMap<String, JButton> getButtonMap() {
-        return TitleButtonMap;
+        return titleButtonMap;
     }
     
 }
