@@ -25,7 +25,6 @@ public class TitleScreen extends JFrame implements ICustomButton{
 
     private JLabel backgroundLabel;
     private ImageIcon imageIcon;
-    private TitleScreen view;
 
 	public TitleScreen() {
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize(); 
@@ -43,8 +42,6 @@ public class TitleScreen extends JFrame implements ICustomButton{
 		pack();
 		setVisible(true);
 		toFront();
-
-        view = this;
 	}
 
 	private JPanel titelPanel(int width, int height)  {
@@ -88,15 +85,15 @@ public class TitleScreen extends JFrame implements ICustomButton{
             button.getValue().addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseEntered(MouseEvent e) {
-                    highlineButton(view, button.getKey(), "enter");
+                    highlineButton(TitleButtonMap, button.getKey(), "enter");
                 }
                 @Override
 	            public void mouseExited(MouseEvent e) {
-                    highlineButton(view, button.getKey(), "exit");
+                    highlineButton(TitleButtonMap, button.getKey(), "exit");
 	            }
                 @Override
 	            public void mousePressed(MouseEvent e) {
-                    highlineButton(view, button.getKey(), "pressed");
+                    highlineButton(TitleButtonMap, button.getKey(), "pressed");
 	            }
             });
         }

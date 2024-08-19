@@ -15,11 +15,11 @@ public class Player {
         return POSITION;
     }
 
-    protected String getName() {
+    public String getName() {
         return NAME;
     }
 
-    protected int getScore() {
+    public int getScore() {
         return score;
     }
 

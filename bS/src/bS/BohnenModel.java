@@ -13,10 +13,10 @@ public class BohnenModel {
     Random rand = new Random();
 
     protected  BohnenModel() {
+        playerIndex = rand.nextInt(2);
     }
 
     protected void startGame(String[] player, boolean isDebug) {
-        playerIndex = rand.nextInt(2);
         board = new Board();
         this.isDebug = isDebug;
 
@@ -79,6 +79,10 @@ public class BohnenModel {
             }
             selectedIndex = -1;
         }
+    }
+
+    protected ArrayList<Player> getPlayerList(){
+        return playerList;
     }
 
     // Test function only tobe delete
