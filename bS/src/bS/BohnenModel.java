@@ -21,8 +21,8 @@ public class BohnenModel {
         this.isDebug = isDebug;
 
         playerList = new ArrayList<Player>();
-        playerList.add(new Player(player[0] , 0, "R", 0));
-        playerList.add(new Player(player[1] , 0, "B", 1));
+        playerList.add(new Player(player[0] , 0, "B", 0));
+        playerList.add(new Player(player[1] , 0, "R", 1));
         currentPlayer = playerList.get(playerIndex);
     }
 
@@ -58,7 +58,7 @@ public class BohnenModel {
         }
 
         for(int i = 0; i <= loop; i++) {
-                            System.out.println(subStep[i]);
+           System.out.println(subStep[i]);
             for(int j = 1; j <= subStep[i]; j++) {
 
                 currentHole = board.getHolesList().get(selectedIndex + j);
@@ -67,11 +67,15 @@ public class BohnenModel {
                 if(!position[1].equals("0")) {     
                     currentHole.setStone(1);
                 }
-                else  {
+                else if(position[0].equals(currentPlayer.getPosition())) {
                     currentHole.setStone(1);
                     currentPlayer.setScore(board.getHolesList().get(selectedIndex + j).getStone()); 
                 }
-
+                else{
+                    selectedIndex = 0;
+                    currentHole = board.getHolesList().get(selectedIndex + j);
+                    currentHole.setStone(1);
+                }
             }
             selectedIndex = -1;
         }

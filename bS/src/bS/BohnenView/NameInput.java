@@ -62,22 +62,22 @@ public class NameInput extends JDialog{
         textLabel = new JLabel("Players Name", JLabel.CENTER);
         textLabel.setBounds(85, 20, 400, 60);
         textLabel.setFont(new Font( "Arial", Font.BOLD, 35));
-
-        player1 = new JLabel("Red Side", JLabel.CENTER);
-        player1.setBounds(80, 105, 120, 40);
+        
+        player1 = new JLabel("Blue Side", JLabel.CENTER);
+        player1.setBounds(80, 165, 120, 40);
         player1.setFont(new Font( "Arial", Font.BOLD, 25));
 
         textField1 = new JTextField();
-        textField1.setBounds(215, 105, 260, 40);
+        textField1.setBounds(215, 165, 260, 40);
         textField1.setFont(new Font( "Arial", Font.PLAIN, 20));
         textField1.setText("Player 1");
 
-        player2 = new JLabel("Blue Side", JLabel.CENTER);
-        player2.setBounds(80, 165, 120, 40);
+        player2 = new JLabel("Red Side", JLabel.CENTER);
+        player2.setBounds(80, 105, 120, 40);
         player2.setFont(new Font( "Arial", Font.BOLD, 25));
 
         textField2 = new JTextField();
-        textField2.setBounds(215, 165, 260, 40);
+        textField2.setBounds(215, 105, 260, 40);
         textField2.setFont(new Font( "Arial", Font.PLAIN, 20));
         textField2.setText("Player 2");
 
