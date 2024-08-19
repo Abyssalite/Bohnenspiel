@@ -24,7 +24,7 @@ public class NameInput extends JDialog{
 
 	public NameInput() {
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize(); 
-        int width = (int) (size.getWidth() * 0.32);
+        int width = (int) (size.getWidth() * 0.35);
         int height = (int) (size.getHeight() * 0.30);
 
 		setTitle("Name Input");
@@ -44,7 +44,7 @@ public class NameInput extends JDialog{
 
 		// Tasten erstellen
 		okBtn = new JButton("Start");
-		okBtn.setBounds(95, 250, 140, 50);
+		okBtn.setBounds(95, 245, 140, 50);
 		okBtn.setFont(new Font("Arial", Font.BOLD, 26));
 		okBtn.setBackground(Color.lightGray);
         okBtn.setFocusPainted(false);
@@ -52,8 +52,8 @@ public class NameInput extends JDialog{
 		okBtn.setOpaque(true);
 
         clrBtn = new JButton("Back");
-		clrBtn.setBounds(320, 250, 140, 50);
-		clrBtn.setFont(new Font("Arial", Font.BOLD, 23));
+		clrBtn.setBounds(320, 245, 140, 50);
+		clrBtn.setFont(new Font("Arial", Font.BOLD, 26));
 		clrBtn.setBackground(Color.lightGray);
         clrBtn.setFocusPainted(false);
         clrBtn.setBorderPainted(false);
@@ -63,21 +63,21 @@ public class NameInput extends JDialog{
         textLabel.setBounds(85, 20, 400, 60);
         textLabel.setFont(new Font( "Arial", Font.BOLD, 35));
 
-        player1 = new JLabel("Player 1", JLabel.CENTER);
-        player1.setBounds(85, 110, 100, 40);
+        player1 = new JLabel("Red Side", JLabel.CENTER);
+        player1.setBounds(80, 105, 120, 40);
         player1.setFont(new Font( "Arial", Font.BOLD, 25));
 
         textField1 = new JTextField();
-        textField1.setBounds(210, 110, 260, 40);
+        textField1.setBounds(215, 105, 260, 40);
         textField1.setFont(new Font( "Arial", Font.PLAIN, 20));
         textField1.setText("Player 1");
 
-        player2 = new JLabel("Player 2", JLabel.CENTER);
-        player2.setBounds(85, 170, 100, 40);
+        player2 = new JLabel("Blue Side", JLabel.CENTER);
+        player2.setBounds(80, 165, 120, 40);
         player2.setFont(new Font( "Arial", Font.BOLD, 25));
 
         textField2 = new JTextField();
-        textField2.setBounds(210, 170, 260, 40);
+        textField2.setBounds(215, 165, 260, 40);
         textField2.setFont(new Font( "Arial", Font.PLAIN, 20));
         textField2.setText("Player 2");
 
@@ -93,7 +93,6 @@ public class NameInput extends JDialog{
         namePanel.add(player2);
 		return namePanel;
 	}
-
 
     public void nameActionListener(ActionListener evt) {
 		okBtn.addActionListener(evt);

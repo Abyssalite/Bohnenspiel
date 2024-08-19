@@ -21,12 +21,8 @@ public class BohnenModel {
         this.isDebug = isDebug;
 
         playerList = new ArrayList<Player>();
-        for (int i = 0; i <= 1; i++) {
-            if(i == 0)
-                playerList.add(new Player(player[i] , 0, "R"));
-            else
-                playerList.add(new Player(player[i] , 0, "B"));
-        }
+        playerList.add(new Player(player[0] , 0, "R"));
+        playerList.add(new Player(player[1] , 0, "B"));
         currentPlayer = playerList.get(playerIndex);
     }
 
