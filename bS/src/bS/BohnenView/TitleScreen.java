@@ -67,7 +67,7 @@ public class TitleScreen extends JFrame implements ICustomButton{
             button.getValue().setFont(new Font("Arial", Font.BOLD, 50));
             button.getValue().setBackground(Color.BLACK);
             button.getValue().setForeground(Color.WHITE);
-            button.getValue().setContentAreaFilled(false);
+            button.getValue().setContentAreaFilled(true);
             button.getValue().setBorderPainted(false);
             button.getValue().setFocusPainted(false);
             button.getValue().setOpaque(false);

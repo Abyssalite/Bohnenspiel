@@ -117,7 +117,7 @@ public class GameBoard extends JFrame implements ICustomButton{
             holeButtonList.get(i).setFont(new Font("Arial", Font.BOLD, 40));
             holeButtonList.get(i).setBackground(Color.BLACK);
             holeButtonList.get(i).setForeground(Color.WHITE);
-            holeButtonList.get(i).setContentAreaFilled(false);
+            holeButtonList.get(i).setContentAreaFilled(true);
             holeButtonList.get(i).setBorderPainted(false);
             holeButtonList.get(i).setFocusPainted(false);
             holeButtonList.get(i).setOpaque(false);
@@ -153,7 +153,7 @@ public class GameBoard extends JFrame implements ICustomButton{
         inx0.setBounds(1440, 600, 80, 60);
 
         boardButtonMap = new LinkedHashMap<String, JButton>();
-        boardButtonMap.put("restartBtn", restartBtn = new JButton("Retart"));
+        boardButtonMap.put("restartBtn", restartBtn = new JButton("Restart"));
         boardButtonMap.put("menuBtn", menuBtn = new JButton("Menu"));
         boardButtonMap.put("quitBtn", quitBtn = new JButton("Quit"));
         if (isDebug)
@@ -168,7 +168,7 @@ public class GameBoard extends JFrame implements ICustomButton{
             button.getValue().setFont(new Font("Arial", Font.BOLD, 40));
             button.getValue().setBackground(Color.BLACK);
             button.getValue().setForeground(Color.WHITE);
-            button.getValue().setContentAreaFilled(false);
+            button.getValue().setContentAreaFilled(true);
             button.getValue().setBorderPainted(false);
             button.getValue().setFocusPainted(false);
             button.getValue().setOpaque(false);
