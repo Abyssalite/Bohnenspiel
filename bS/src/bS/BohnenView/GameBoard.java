@@ -43,7 +43,7 @@ public class GameBoard extends JFrame implements ICustomButton{
         int width = (int) (size.getWidth() * 0.99);
         int height = (int) (size.getHeight() * 0.93);
 
-		setTitle("BohnenSpiel v0.05");
+		setTitle("BohnenSpiel v0.06");
 		setSize(new Dimension(width, height));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
@@ -80,19 +80,19 @@ public class GameBoard extends JFrame implements ICustomButton{
         playerElements.add(player1Score = new JLabel("", JLabel.CENTER));
         playerElements.add(player2Score = new JLabel("", JLabel.CENTER));
 
-        player1Name.setBounds(355, 380, 320, 60);
+        player1Name.setBounds(344, 370, 330, 80);
         player1Name.setForeground(Color.WHITE);
         player1Name.setFont(new Font( "Arial", Font.PLAIN, 40));
 
-        player1Score.setBounds(750, 380, 60, 60);
+        player1Score.setBounds(724, 370, 100, 80);
         player1Score.setForeground(Color.WHITE);
         player1Score.setFont(new Font( "Arial", Font.BOLD, 45));
 
-        player2Name.setBounds(1130, 830, 320, 60);
+        player2Name.setBounds(1138, 830, 330, 80);
         player2Name.setForeground(Color.WHITE);
         player2Name.setFont(new Font( "Arial", Font.PLAIN, 40));
 
-        player2Score.setBounds(1525, 830, 60, 60);
+        player2Score.setBounds(1522, 830, 100, 80);
         player2Score.setForeground(Color.WHITE);
         player2Score.setFont(new Font( "Arial", Font.BOLD, 45));
 
@@ -117,7 +117,7 @@ public class GameBoard extends JFrame implements ICustomButton{
             holeButtonList.get(i).setFont(new Font("Arial", Font.BOLD, 40));
             holeButtonList.get(i).setBackground(Color.BLACK);
             holeButtonList.get(i).setForeground(Color.WHITE);
-            holeButtonList.get(i).setContentAreaFilled(true);
+            holeButtonList.get(i).setContentAreaFilled(false);
             holeButtonList.get(i).setBorderPainted(false);
             holeButtonList.get(i).setFocusPainted(false);
             holeButtonList.get(i).setOpaque(false);
@@ -137,20 +137,20 @@ public class GameBoard extends JFrame implements ICustomButton{
             boardPanel.add(holeButtonList.get(i));
         }
 
-        inx1.setBounds(1300, 532,80, 60);
-        inx2.setBounds(1157, 532, 80, 60);
-        inx3.setBounds(1015, 532, 80, 60);
-        inx4.setBounds(878, 532, 80, 60);
-        inx5.setBounds(731, 532, 80, 60);
-        inx6.setBounds(590, 532, 80, 60);
-        inx7.setBounds(450, 600, 80, 60);
-        inx8.setBounds(590, 680, 80, 60);
-        inx9.setBounds(731, 680, 80, 60);
-        inx10.setBounds(878, 680, 80, 60);
-        inx11.setBounds(1015, 680, 80, 60);
-        inx12.setBounds(1157, 680, 80, 60);
-        inx13.setBounds(1300, 680, 80, 60);
-        inx0.setBounds(1440, 600, 80, 60);
+        inx1.setBounds(1290, 507,110, 110);
+        inx2.setBounds(1143, 507, 110, 110);
+        inx3.setBounds(998, 507, 110, 110);
+        inx4.setBounds(854, 507, 110, 110);
+        inx5.setBounds(709, 507, 110, 110);
+        inx6.setBounds(563, 507, 110, 110);
+        inx7.setBounds(415, 580, 110, 110);
+        inx8.setBounds(563, 663, 110, 110);
+        inx9.setBounds(709, 663, 110, 110);
+        inx10.setBounds(854, 663, 110, 110);
+        inx11.setBounds(998, 663, 110, 110);
+        inx12.setBounds(1143, 663, 110, 110);
+        inx13.setBounds(1290, 663, 110, 110);
+        inx0.setBounds(1438, 580, 110, 110);
 
         boardButtonMap = new LinkedHashMap<String, JButton>();
         boardButtonMap.put("restartBtn", restartBtn = new JButton("Restart"));
@@ -159,7 +159,7 @@ public class GameBoard extends JFrame implements ICustomButton{
         if (isDebug)
         {
             boardButtonMap.put("editBtn", editBtn = new JButton("Edit"));
-            editBtn.setBounds(48, 337, 225, 75);
+            editBtn.setBounds(36, 378, 244, 81);
             editBtn.setActionCommand("editBtn");
             boardPanel.add(editBtn);
         } 
@@ -168,7 +168,7 @@ public class GameBoard extends JFrame implements ICustomButton{
             button.getValue().setFont(new Font("Arial", Font.BOLD, 40));
             button.getValue().setBackground(Color.BLACK);
             button.getValue().setForeground(Color.WHITE);
-            button.getValue().setContentAreaFilled(true);
+            button.getValue().setContentAreaFilled(false);
             button.getValue().setBorderPainted(false);
             button.getValue().setFocusPainted(false);
             button.getValue().setOpaque(false);
@@ -189,9 +189,9 @@ public class GameBoard extends JFrame implements ICustomButton{
             });
             boardPanel.add(button.getValue());
         }
-        quitBtn.setBounds(48, 32, 225, 75);
-		restartBtn.setBounds(48, 136, 225, 75);
-		menuBtn.setBounds(48, 236, 225, 75);
+        quitBtn.setBounds(36, 40, 244, 82);
+		restartBtn.setBounds(36, 154, 244, 82);
+		menuBtn.setBounds(36, 263, 244, 82);
         
 		// Set ActionCommand
 		restartBtn.setActionCommand("restartBtn");

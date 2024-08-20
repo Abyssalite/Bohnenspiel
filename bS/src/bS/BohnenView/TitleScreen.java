@@ -31,7 +31,7 @@ public class TitleScreen extends JFrame implements ICustomButton{
         int width = (int) (size.getWidth() * 0.99);
         int height = (int) (size.getHeight() * 0.93);
 
-		setTitle("BohnenSpiel v0.05");
+		setTitle("BohnenSpiel v0.06");
 		setSize(new Dimension(width, height));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
@@ -67,7 +67,7 @@ public class TitleScreen extends JFrame implements ICustomButton{
             button.getValue().setFont(new Font("Arial", Font.BOLD, 50));
             button.getValue().setBackground(Color.BLACK);
             button.getValue().setForeground(Color.WHITE);
-            button.getValue().setContentAreaFilled(true);
+            button.getValue().setContentAreaFilled(false);
             button.getValue().setBorderPainted(false);
             button.getValue().setFocusPainted(false);
             button.getValue().setOpaque(false);
@@ -88,9 +88,9 @@ public class TitleScreen extends JFrame implements ICustomButton{
             });
             menuPanel.add(button.getValue());
         }
-		startBtn.setBounds(301, 421, 303, 102);
-		debugBtn.setBounds(301, 554, 303, 102);
-		quitBtn.setBounds(301, 684, 303, 102);
+		startBtn.setBounds(197, 397, 347, 116);
+		debugBtn.setBounds(198, 551, 347, 116);
+		quitBtn.setBounds(199, 697, 347, 116);
 
 		// Set ActionCommand
 		startBtn.setActionCommand("startBtn");
