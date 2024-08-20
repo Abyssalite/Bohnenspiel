@@ -43,7 +43,7 @@ public class GameBoard extends JFrame implements ICustomButton{
         int width = (int) (size.getWidth() * 0.99);
         int height = (int) (size.getHeight() * 0.93);
 
-		setTitle("BohnenSpiel v0.01");
+		setTitle("BohnenSpiel v0.05");
 		setSize(new Dimension(width, height));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
