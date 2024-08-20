@@ -28,7 +28,7 @@ public class NameInput extends JDialog{
         int height = (int) (size.getHeight() * 0.30);
 
 		setTitle("Name Input");
-		setPreferredSize(new Dimension(570, 370));
+		setPreferredSize(new Dimension(560, 340));
 		setResizable(false);
 		add(NameInputPanel());
 		setLocation(width, height);
@@ -39,12 +39,12 @@ public class NameInput extends JDialog{
 	private JPanel NameInputPanel() {
 		// Titelbildschirm erstellen
 		namePanel = new JPanel();
-		namePanel.setPreferredSize(new Dimension(570, 370));
+		namePanel.setPreferredSize(new Dimension(560, 340));
 		namePanel.setLayout(null);
 
 		// Tasten erstellen
 		okBtn = new JButton("Start");
-		okBtn.setBounds(95, 245, 140, 50);
+		okBtn.setBounds(95, 250, 140, 50);
 		okBtn.setFont(new Font("Arial", Font.BOLD, 26));
 		okBtn.setBackground(Color.lightGray);
         okBtn.setFocusPainted(false);
@@ -52,7 +52,7 @@ public class NameInput extends JDialog{
 		okBtn.setOpaque(true);
 
         clrBtn = new JButton("Back");
-		clrBtn.setBounds(320, 245, 140, 50);
+		clrBtn.setBounds(320, 250, 140, 50);
 		clrBtn.setFont(new Font("Arial", Font.BOLD, 26));
 		clrBtn.setBackground(Color.lightGray);
         clrBtn.setFocusPainted(false);
