@@ -28,7 +28,7 @@ public class NameInput extends JDialog{
         int height = (int) (size.getHeight() * 0.30);
 
 		setTitle("Name Input");
-		setPreferredSize(new Dimension(575, 375));
+		setPreferredSize(new Dimension(570, 370));
 		setResizable(false);
 		add(NameInputPanel());
 		setLocation(width, height);
@@ -39,7 +39,7 @@ public class NameInput extends JDialog{
 	private JPanel NameInputPanel() {
 		// Titelbildschirm erstellen
 		namePanel = new JPanel();
-		namePanel.setPreferredSize(new Dimension(575, 375));
+		namePanel.setPreferredSize(new Dimension(570, 370));
 		namePanel.setLayout(null);
 
 		// Tasten erstellen
