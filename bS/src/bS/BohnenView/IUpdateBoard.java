@@ -60,7 +60,7 @@ public interface IUpdateBoard {
                 playerElements.get(0).setFont(new Font( "Arial", Font.PLAIN, 40));
                 playerElements.get(0).setForeground(Color.WHITE);   
                 playerElements.get(1).setFont(new Font( "Arial", Font.BOLD, 40));
-                playerElements.get(1).setForeground(Color.MAGENTA); 
+                playerElements.get(1).setForeground(Color.ORANGE); 
         }
         playerElements.get(currentPlayer.getIndex() + 2).setText(String.valueOf(currentPlayer.getScore()));
     }
