@@ -16,37 +16,41 @@ public interface IUpdateBoard {
             playerElements.get(1).setText(players.get(1).getName());
             playerElements.get(2).setText(String.valueOf(players.get(0).getScore()));
             playerElements.get(3).setText(String.valueOf(players.get(1).getScore()));
-
     }
 
     public default void updateStoneNumber(ArrayList<JButton> holeButton, ArrayList<Holes> holes) {
-        for(int i = 0; i <= 13; i++){
+        for(int i = 0; i <= 13; i++) {
                 holeButton.get(i).setText(String.valueOf(holes.get(i).getStone()));
         }
     }
 
-    public default void disableButton(ArrayList<JButton> holeButton, Player currentPlayer) {
-        holeButton.get(0).setEnabled(false);  
-        holeButton.get(7).setEnabled(false);  
-        if(currentPlayer.getIndex() == 0){
-                for(int i = 8; i <= 13; i++)
-                        holeButton.get(i).setEnabled(false);  
-
-                for(int i = 1; i <= 6; i++)
-                        holeButton.get(i).setEnabled(true); 
+    public default void disableButton(ArrayList<JButton> holeButton, Player currentPlayer, boolean isEditing) {
+        if (!isEditing) {
+                holeButton.get(0).setEnabled(false);  
+                holeButton.get(7).setEnabled(false);  
+                if(currentPlayer.getIndex() == 0) {
+                        for(int i = 8; i <= 13; i++)
+                                holeButton.get(i).setEnabled(false);  
+        
+                        for(int i = 1; i <= 6; i++)
+                                holeButton.get(i).setEnabled(true); 
+                }
+                else{
+                        for(int i = 8; i <= 13; i++)
+                                holeButton.get(i).setEnabled(true);  
+        
+                        for(int i = 1; i <= 6; i++)
+                                holeButton.get(i).setEnabled(false); 
+                }
         }
         else{
-                for(int i = 8; i <= 13; i++)
-                        holeButton.get(i).setEnabled(true);  
-
-                for(int i = 1; i <= 6; i++)
-                        holeButton.get(i).setEnabled(false); 
+                for(int i = 0; i <= 13; i++)
+                holeButton.get(i).setEnabled(true);  
         }
-
     }
 
     public default void highlinePlayer(ArrayList<JLabel> playerElements, Player currentPlayer) {
-        if(currentPlayer.getIndex() == 0){
+        if(currentPlayer.getIndex() == 0) {
                 playerElements.get(0).setFont(new Font( "Arial", Font.BOLD, 40));
                 playerElements.get(0).setForeground(Color.CYAN);   
                 playerElements.get(1).setFont(new Font( "Arial", Font.PLAIN, 40));
@@ -58,5 +62,7 @@ public interface IUpdateBoard {
                 playerElements.get(1).setFont(new Font( "Arial", Font.BOLD, 40));
                 playerElements.get(1).setForeground(Color.MAGENTA); 
         }
+        playerElements.get(currentPlayer.getIndex() + 2).setText(String.valueOf(currentPlayer.getScore()));
     }
+
 }

@@ -23,7 +23,7 @@ public class GameBoard extends JFrame implements ICustomButton{
     private ArrayList<JButton> holeButtonList;
     private LinkedHashMap<String, JButton> boardButtonMap;
     private ArrayList<JLabel> playerElements;
-	private JButton startBtn;
+	private JButton editBtn;
     private JButton restartBtn;
     private JButton quitBtn;
     private JButton menuBtn;
@@ -113,7 +113,7 @@ public class GameBoard extends JFrame implements ICustomButton{
         holeButtonList.add(inx12 = new JButton("0"));
         holeButtonList.add(inx13 = new JButton("0"));
 
-        for(int i = 0; i <= 13; i++){
+        for(int i = 0; i <= 13; i++) {
             holeButtonList.get(i).setFont(new Font("Arial", Font.BOLD, 40));
             holeButtonList.get(i).setBackground(Color.BLACK);
             holeButtonList.get(i).setForeground(Color.WHITE);
@@ -158,10 +158,10 @@ public class GameBoard extends JFrame implements ICustomButton{
         boardButtonMap.put("quitBtn", quitBtn = new JButton("Quit"));
         if (isDebug)
         {
-            boardButtonMap.put("startBtn", startBtn = new JButton("Start"));
-            startBtn.setBounds(48, 337, 225, 75);
-            startBtn.setActionCommand("startBtn");
-            boardPanel.add(startBtn);
+            boardButtonMap.put("editBtn", editBtn = new JButton("Edit"));
+            editBtn.setBounds(48, 337, 225, 75);
+            editBtn.setActionCommand("editBtn");
+            boardPanel.add(editBtn);
         } 
 
         for(Map.Entry<String, JButton> button : boardButtonMap.entrySet()) {
@@ -212,7 +212,7 @@ public class GameBoard extends JFrame implements ICustomButton{
 		restartBtn.addActionListener(evt);
 		menuBtn.addActionListener(evt);
         quitBtn.addActionListener(evt);
-        if (isDebug) startBtn.addActionListener(evt);
+        if (isDebug) editBtn.addActionListener(evt);
         for(JButton button: holeButtonList)
             button.addActionListener(evt);
 	}

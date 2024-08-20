@@ -2,6 +2,8 @@ package bS;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 import bS.BohnenView.*;
 
 public class BohnenController implements ActionListener {
@@ -34,9 +36,10 @@ public class BohnenController implements ActionListener {
                 view.dispose();
                 break;                
             }
-
-            default:
+            default:{
+                System.err.println("Unexpected input");
                 break;
+            }
         }
     }
 
@@ -72,6 +75,10 @@ class NameInputController implements ActionListener {
                 view.dispose();
                 break;
             }
+            default:{
+                System.err.println("Unexpected input");
+                break;
+            }
         }
     }
 
@@ -83,12 +90,14 @@ class GameBoardController implements ActionListener, IUpdateBoard{
     private GameBoard view;
     private final boolean ISDEBUG;
     private String[] players;
+    private boolean isEditing;
     
     protected  GameBoardController(GameBoard view, TitleScreen parent, boolean isDebug, String[] players) {
         this.view = view;
         this.parent = parent;
         this.ISDEBUG = isDebug;
         this.players = players;
+        isEditing = isDebug;
 
         model = new BohnenModel();
         model.startGame(players, ISDEBUG);
@@ -117,20 +126,45 @@ class GameBoardController implements ActionListener, IUpdateBoard{
                 
                 break;
             }
-            case "startBtn": {
+            case "editBtn": {
+                isEditing = !isEditing;
+                update(); 
                 break;
             }
             default:{
-                model.loopHole(Integer.parseInt(actionEvent));
-                update();
+                try {
+                   handleHoleClick(Integer.parseInt(actionEvent), isEditing);
+
+                } catch (NumberFormatException nfe) {
+                    System.err.println("Unexpected input");
+                }
+                break;
             }
         }
     }
 
-    private void update(){
+    private void handleHoleClick(int index, boolean isEditing) {
+        if (!isEditing) {
+            model.loopHole(index);
+            update();  
+        }
+        else {
+            int stone;
+            try {
+                String s = JOptionPane.showInputDialog(view,"Enter stone");
+                if(!(s == null))
+                    stone = Integer.parseInt(s); 
+
+            } catch (NumberFormatException nfe) {
+                JOptionPane.showMessageDialog(view, "Wuhttt??");
+            }
+        }
+    }
+
+    private void update() {
         highlinePlayer(view.getPlayerElements(), model.getCurrentPlayer());
         updateStoneNumber(view.getHoleButton(),model.getHoleList());
-        disableButton(view.getHoleButton(), model.getCurrentPlayer());
+        disableButton(view.getHoleButton(), model.getCurrentPlayer(), isEditing);
     }
 
 }

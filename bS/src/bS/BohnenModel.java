@@ -81,15 +81,15 @@ public class BohnenModel {
         }
     }
 
-    protected ArrayList<Player> getPlayerList(){
+    protected ArrayList<Player> getPlayerList() {
         return playerList;
     }
 
-    protected ArrayList<Holes> getHoleList(){
+    protected ArrayList<Holes> getHoleList() {
         return board.getHolesList();
     }
 
-    protected Player getCurrentPlayer(){
+    protected Player getCurrentPlayer() {
         return currentPlayer;
     }
 
