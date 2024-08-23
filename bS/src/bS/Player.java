@@ -4,22 +4,28 @@ public class Player {
     private final String POSITION;
 	private final String NAME;
 	private int score;
+    private final int INDEX;
 
-	protected Player(String name, int score, String position) {
+	protected Player(String name, int score, String position, int index) {
 		this.NAME = name;
 		this.score = score;
         this.POSITION = position;
+        this.INDEX = index;
 	} 
 
     protected String getPosition() {
         return POSITION;
     }
 
-    protected String getName() {
+    public String getName() {
         return NAME;
     }
 
-    protected int getScore() {
+    public int getIndex() {
+        return INDEX;
+    }
+
+    public int getScore() {
         return score;
     }
 

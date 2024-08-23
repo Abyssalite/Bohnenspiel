@@ -10,9 +10,9 @@ public class Menu {
             case 1:
                 // Placeholder, player name can be inputed at the game start
                 String[] player = {"Anastasia" , "Huy"};
-                NormalSpiel normalSpiel = new NormalSpiel();
-                normalSpiel.startGame(player);
-                normalSpiel.printBoard();
+                BohnenModel normalSpiel = new BohnenModel();
+                normalSpiel.startGame(player, false);
+                normalSpiel.afficherPlateau();
                 break;
             case 3:
                 System.out.println("Exiting game...");
