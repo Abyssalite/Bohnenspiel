@@ -30,7 +30,7 @@ public class BohnenModel {
     protected void changePlayer() {
         String[] position = currentHole.getPosition().split("_");
 
-        if (position[1].equals("0")) 
+        if (position[1].equals("0") || currentHole.getStone() == 0) 
             canChange = false;
         else
             canChange = true;

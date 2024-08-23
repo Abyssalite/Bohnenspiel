@@ -149,7 +149,6 @@ class GameBoardController implements ActionListener, IUpdateBoard{
             update();  
             model.changePlayer();
             update();  
-
         }
         else {
             int stone;
