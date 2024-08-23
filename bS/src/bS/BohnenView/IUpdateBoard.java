@@ -14,8 +14,7 @@ public interface IUpdateBoard {
         public default void init(ArrayList<JLabel> playerElements, ArrayList<Player> players) {
             playerElements.get(0).setText(players.get(0).getName());
             playerElements.get(1).setText(players.get(1).getName());
-            playerElements.get(2).setText(String.valueOf(players.get(0).getScore()));
-            playerElements.get(3).setText(String.valueOf(players.get(1).getScore()));
+            updateScore(playerElements, players);
     }
 
     public default void updateStoneNumber(ArrayList<JButton> holeButton, ArrayList<Holes> holes) {
