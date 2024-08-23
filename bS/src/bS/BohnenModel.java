@@ -122,4 +122,8 @@ public class BohnenModel {
         return currentPlayer;
     }
 
+    protected boolean isDebug() {
+        return ISDEBUG;
+    }
+
 }
