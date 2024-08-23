@@ -28,14 +28,14 @@ public interface IUpdateBoard {
         if (!isEditing) {
                 holeButton.get(0).setEnabled(false);  
                 holeButton.get(7).setEnabled(false);  
-                if(currentPlayer.getIndex() == 0) {
+                if (currentPlayer.getPosition().equals("B")) {
                         for(int i = 8; i <= 13; i++)
                                 holeButton.get(i).setEnabled(false);  
         
                         for(int i = 1; i <= 6; i++)
                                 holeButton.get(i).setEnabled(true); 
                 }
-                else{
+                else {
                         for(int i = 8; i <= 13; i++)
                                 holeButton.get(i).setEnabled(true);  
         
@@ -43,26 +43,30 @@ public interface IUpdateBoard {
                                 holeButton.get(i).setEnabled(false); 
                 }
         }
-        else{
+        else {
                 for(int i = 0; i <= 13; i++)
                 holeButton.get(i).setEnabled(true);  
         }
     }
 
     public default void highlinePlayer(ArrayList<JLabel> playerElements, Player currentPlayer) {
-        if(currentPlayer.getIndex() == 0) {
+        if (currentPlayer.getPosition().equals("B")) {
                 playerElements.get(0).setFont(new Font( "Arial", Font.BOLD, 40));
                 playerElements.get(0).setForeground(Color.CYAN);   
                 playerElements.get(1).setFont(new Font( "Arial", Font.PLAIN, 40));
                 playerElements.get(1).setForeground(Color.WHITE); 
         }
-        else{
+        else {
                 playerElements.get(0).setFont(new Font( "Arial", Font.PLAIN, 40));
                 playerElements.get(0).setForeground(Color.WHITE);   
                 playerElements.get(1).setFont(new Font( "Arial", Font.BOLD, 40));
                 playerElements.get(1).setForeground(Color.ORANGE); 
         }
-        playerElements.get(currentPlayer.getIndex() + 2).setText(String.valueOf(currentPlayer.getScore()));
+    }
+
+    public default void updateScore(ArrayList<JLabel> playerElements, ArrayList<Player> players) {
+        playerElements.get(2).setText(String.valueOf(players.get(0).getScore()));
+        playerElements.get(3).setText(String.valueOf(players.get(1).getScore()));
     }
 
 }

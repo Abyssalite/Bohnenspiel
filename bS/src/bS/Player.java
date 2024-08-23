@@ -4,25 +4,25 @@ public class Player {
     private final String POSITION;
 	private final String NAME;
 	private int score;
-    private final int INDEX;
+    private final int COLLECT;
 
-	protected Player(String name, int score, String position, int index) {
+	protected Player(String name, int score, String position, int collect) {
 		this.NAME = name;
 		this.score = score;
         this.POSITION = position;
-        this.INDEX = index;
+        this.COLLECT = collect;
 	} 
 
-    protected String getPosition() {
+    public String getPosition() {
         return POSITION;
+    }
+
+    public int getCollect() {
+        return COLLECT;
     }
 
     public String getName() {
         return NAME;
-    }
-
-    public int getIndex() {
-        return INDEX;
     }
 
     public int getScore() {

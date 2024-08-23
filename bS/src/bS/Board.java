@@ -6,26 +6,25 @@ public class Board {
 
         protected Board() {
             holesList = new ArrayList<Holes>();
-            int j = 0;
+            int j = 14;
 
             for (int i = 0; i <= 13; i++) {
-                if(i < 7) {
+                if (i < 7) {
                     if ((i % 7) != 0) {
-                        // Stone 20 for testing should be 4
-                        holesList.add(new Holes(4, i  ,"B_"+ (i % 7))) ;
+                        holesList.add(new Holes(4, i ,"B_"+ (i % 7), (i + j)));
                     }
                     else {
-                        holesList.add(new Holes(0, i  ,"R_"+ (i % 7))) ;
+                        holesList.add(new Holes(0, i ,"R_"+ (i % 7), (7)));
                     }
+                    j -= 2;
                 }
                 
-                else{
+                else {
                     if ((i % 7) != 0) {
-                        // Stone 20 for testing should be 4
-                        holesList.add(new Holes(4, i  ,"R_"+ ((i - j) % 7))) ;
+                        holesList.add(new Holes(4, i ,"R_"+ ((i - j) % 7), (i - j)));
                     }
                     else {
-                        holesList.add(new Holes(0, i  ,"B_"+ ((i - j) % 7))) ;
+                        holesList.add(new Holes(0, i ,"B_"+ ((i - j) % 7), (0)));
                     }
                     j += 2;
                 }

@@ -99,8 +99,8 @@ class GameBoardController implements ActionListener, IUpdateBoard{
         this.players = players;
         isEditing = isDebug;
 
-        model = new BohnenModel();
-        model.startGame(players, ISDEBUG);
+        model = new BohnenModel(ISDEBUG);
+        model.startGame(players);
         init(view.getPlayerElements(), model.getPlayerList());
         update();
     }
@@ -119,8 +119,8 @@ class GameBoardController implements ActionListener, IUpdateBoard{
                 break;
             }
             case "restartBtn": {
-                this.model = new BohnenModel();
-                model.startGame(players, ISDEBUG);
+                this.model = new BohnenModel(ISDEBUG);
+                model.startGame(players);
                 init(view.getPlayerElements(), model.getPlayerList());
                 update();
                 
@@ -133,7 +133,7 @@ class GameBoardController implements ActionListener, IUpdateBoard{
             }
             default:{
                 try {
-                   handleHoleClick(Integer.parseInt(actionEvent), isEditing);
+                    handleHoleClick(Integer.parseInt(actionEvent), isEditing);
 
                 } catch (NumberFormatException nfe) {
                     System.err.println("Unexpected input");
@@ -147,24 +147,39 @@ class GameBoardController implements ActionListener, IUpdateBoard{
         if (!isEditing) {
             model.loopHole(index);
             update();  
+            model.changePlayer();
+            update();  
+
         }
         else {
             int stone;
-            try {
-                String s = JOptionPane.showInputDialog(view,"Enter stone");
-                if(!(s == null))
-                    stone = Integer.parseInt(s); 
-
-            } catch (NumberFormatException nfe) {
-                JOptionPane.showMessageDialog(view, "Wuhttt??");
+            boolean flag = true;
+            while (flag) {
+                try {
+                    String s = JOptionPane.showInputDialog(view,"Enter stone");
+                    if (s != null) {
+                        stone = Integer.parseInt(s); 
+                        if (stone <= 96) {
+                            model.setStone(index, stone, false);
+                            update(); 
+                        }
+                        else
+                            JOptionPane.showMessageDialog(view, "There are only 9(6) Infinity Stones");
+                    }
+                    flag = false;
+                    
+                } catch (NumberFormatException nfe) {
+                    JOptionPane.showMessageDialog(view, "Wuhttt??");
+                }
             }
         }
     }
 
     private void update() {
         highlinePlayer(view.getPlayerElements(), model.getCurrentPlayer());
-        updateStoneNumber(view.getHoleButton(),model.getHoleList());
+        updateStoneNumber(view.getHoleButton(),model.getHolesList());
         disableButton(view.getHoleButton(), model.getCurrentPlayer(), isEditing);
+        updateScore(view.getPlayerElements(), model.getPlayerList());
     }
 
 }
