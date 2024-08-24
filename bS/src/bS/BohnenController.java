@@ -151,7 +151,6 @@ class GameBoardController implements ActionListener, IUpdateBoard {
             model.loopHole(index);
             update(isEndGame);
             model.changePlayer();
-            update(isEndGame);
         }
         else {
             int stone;
@@ -161,10 +160,8 @@ class GameBoardController implements ActionListener, IUpdateBoard {
                     String s = JOptionPane.showInputDialog(view,"Get the stones, get them back");
                     if (s != null){
                         stone = Integer.parseInt(s); 
-                        if (stone <= 96){
+                        if (stone <= 96)
                             model.setStone(index, stone, false);
-                            update(isEndGame); 
-                        }
                         else
                             JOptionPane.showMessageDialog(view, "There are 9(6) stones out there");
                     }
@@ -176,6 +173,7 @@ class GameBoardController implements ActionListener, IUpdateBoard {
             }
         }
         isEndGame = model.endGame();
+        update(isEndGame);
     }
 
     private void update(boolean isEndGame){

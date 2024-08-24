@@ -121,10 +121,8 @@ public class BohnenModel {
         if (number == 12){
             if (playerList.get(0).getScore() > playerList.get(1).getScore()) 
                 currentPlayer = playerList.get(0);
-
             else if (playerList.get(0).getScore() < playerList.get(1).getScore())
                 currentPlayer = playerList.get(1);
-
             else 
                 currentPlayer = null;
 
