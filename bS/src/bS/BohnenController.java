@@ -174,22 +174,22 @@ class GameBoardController implements ActionListener, IUpdateBoard{
                 }
             }
         }
-
         isEndGame = model.endGame();
-        if (isEndGame){
+    }
+
+    private void update(boolean isEndGame){
+        highlinePlayer(view.getPlayerElements(), model.getCurrentPlayer(), isEndGame);
+        updateStoneNumber(view.getHoleButton(),model.getHolesList());
+        disableButton(view.getHoleButton(), model.getCurrentPlayer(), isEditing, isEndGame);
+        updateScore(view.getPlayerElements(), model.getPlayerList());
+
+        if (isEndGame && !isEditing){
             if (model.getCurrentPlayer() != null){
                 JOptionPane.showMessageDialog(view, "End??");
             }
             else
                 JOptionPane.showMessageDialog(view, "How??");
         }
-    }
-
-    private void update(boolean isEndGame){
-        highlinePlayer(view.getPlayerElements(), model.getCurrentPlayer());
-        updateStoneNumber(view.getHoleButton(),model.getHolesList());
-        disableButton(view.getHoleButton(), model.getCurrentPlayer(), isEditing);
-        updateScore(view.getPlayerElements(), model.getPlayerList());
     }
 
 }

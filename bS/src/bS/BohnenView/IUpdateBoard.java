@@ -23,8 +23,16 @@ public interface IUpdateBoard {
         }
     }
 
-    public default void disableButton(ArrayList<JButton> holeButton, Player currentPlayer, boolean isEditing){
-        if (!isEditing){
+    public default void disableButton(ArrayList<JButton> holeButton, Player currentPlayer, boolean isEditing, boolean isEndGame){
+        if (isEndGame){
+                for(int i = 0; i <= 13; i++)
+                holeButton.get(i).setEnabled(false);
+        }
+        else if (isEditing){
+                for(int i = 0; i <= 13; i++)
+                holeButton.get(i).setEnabled(true);
+        }
+        else {
                 holeButton.get(0).setEnabled(false);
                 holeButton.get(7).setEnabled(false);
                 if (currentPlayer.getPosition().equals("B")){
@@ -42,14 +50,16 @@ public interface IUpdateBoard {
                                 holeButton.get(i).setEnabled(false); 
                 }
         }
-        else {
-                for(int i = 0; i <= 13; i++)
-                holeButton.get(i).setEnabled(true);
-        }
     }
 
-    public default void highlinePlayer(ArrayList<JLabel> playerElements, Player currentPlayer){
-        if (currentPlayer.getPosition().equals("B")){
+    public default void highlinePlayer(ArrayList<JLabel> playerElements, Player currentPlayer, boolean isEndGame){
+        if (isEndGame){
+                playerElements.get(0).setFont(new Font( "Arial", Font.PLAIN, 40));
+                playerElements.get(0).setForeground(Color.WHITE); 
+                playerElements.get(1).setFont(new Font( "Arial", Font.PLAIN, 40));
+                playerElements.get(1).setForeground(Color.WHITE); 
+        }
+        else if (currentPlayer.getPosition().equals("B")){
                 playerElements.get(0).setFont(new Font( "Arial", Font.BOLD, 40));
                 playerElements.get(0).setForeground(Color.CYAN); 
                 playerElements.get(1).setFont(new Font( "Arial", Font.PLAIN, 40));
