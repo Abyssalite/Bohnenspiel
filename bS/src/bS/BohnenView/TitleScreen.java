@@ -16,7 +16,7 @@ import javax.swing.ImageIcon;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class TitleScreen extends JFrame implements ICustomButton{
+public class TitleScreen extends JFrame implements ICustomButton {
     private JPanel menuPanel;
     private LinkedHashMap<String, JButton> titleButtonMap;
 	private JButton startBtn;
@@ -45,7 +45,7 @@ public class TitleScreen extends JFrame implements ICustomButton{
 	}
 
 	private JPanel titelPanel(int width, int height){
-		// Titelbildschirm erstellen
+		// Menu screen
 		menuPanel = new JPanel();
 		menuPanel.setPreferredSize(new Dimension(width, height));
 		menuPanel.setLayout(null);
@@ -57,7 +57,7 @@ public class TitleScreen extends JFrame implements ICustomButton{
 		backgroundLabel.setIcon(imageIcon);
 		backgroundLabel.setBounds(0, 0, width, height);
 
-        // Tasten erstellen
+        // Create button
         titleButtonMap = new LinkedHashMap<String, JButton>();
         titleButtonMap.put("startBtn", startBtn = new JButton("Start"));
         titleButtonMap.put("debugBtn", debugBtn = new JButton("Debug"));
@@ -72,6 +72,7 @@ public class TitleScreen extends JFrame implements ICustomButton{
             button.getValue().setFocusPainted(false);
             button.getValue().setOpaque(false);
 
+            // Override default mouse behaviour for custom button
             button.getValue().addMouseListener(new MouseAdapter(){
                 @Override
                 public void mouseEntered(MouseEvent e){
@@ -102,7 +103,7 @@ public class TitleScreen extends JFrame implements ICustomButton{
 		return menuPanel;
 	}
 
-	// actionListener für die Titelbildschirm
+	// actionListener for the menu
 	public void titleActionListener(ActionListener evt){
 		startBtn.addActionListener(evt);
 		debugBtn.addActionListener(evt);

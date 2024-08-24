@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class GameBoard extends JFrame implements ICustomButton{
+public class GameBoard extends JFrame implements ICustomButton {
     private JPanel boardPanel;
     private ArrayList<JButton> holeButtonList;
     private LinkedHashMap<String, JButton> boardButtonMap;
@@ -57,7 +57,7 @@ public class GameBoard extends JFrame implements ICustomButton{
 	}
 
 	private JPanel titelPanel(int width, int height){
-		// Titelbildschirm erstellen
+		// Game screen
 		boardPanel = new JPanel();
 		boardPanel.setPreferredSize(new Dimension(width, height));
 		boardPanel.setLayout(null);
@@ -96,7 +96,7 @@ public class GameBoard extends JFrame implements ICustomButton{
         player2Score.setForeground(Color.WHITE);
         player2Score.setFont(new Font( "Arial", Font.BOLD, 45));
 
-        // Tasten erstellen
+        // Create button
         holeButtonList = new ArrayList<JButton>();
         holeButtonList.add(inx0 = new JButton("0"));
         holeButtonList.add(inx1 = new JButton("0"));
@@ -123,6 +123,7 @@ public class GameBoard extends JFrame implements ICustomButton{
             holeButtonList.get(i).setOpaque(false);
 
             int index = i;
+            // Override default mouse behaviour for custom button
             holeButtonList.get(i).addMouseListener(new MouseAdapter(){
                 @Override
                 public void mouseEntered(MouseEvent e){
@@ -173,6 +174,7 @@ public class GameBoard extends JFrame implements ICustomButton{
             button.getValue().setFocusPainted(false);
             button.getValue().setOpaque(false);
 
+            // Override default mouse behaviour for custom button
             button.getValue().addMouseListener(new MouseAdapter(){
                 @Override
                 public void mouseEntered(MouseEvent e){
@@ -207,7 +209,7 @@ public class GameBoard extends JFrame implements ICustomButton{
 		return boardPanel;
 	}
 
-	// actionListener für die Titelbildschirm
+	// actionListener for the game board
 	public void boardActionListener(ActionListener evt){
 		restartBtn.addActionListener(evt);
 		menuBtn.addActionListener(evt);

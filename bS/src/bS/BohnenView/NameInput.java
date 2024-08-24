@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class NameInput extends JDialog{
+public class NameInput extends JDialog {
     private JPanel namePanel;
     private JButton okBtn;
     private JButton clrBtn;
@@ -37,12 +37,12 @@ public class NameInput extends JDialog{
 	}
 
 	private JPanel NameInputPanel(){
-		// Titelbildschirm erstellen
+		// Name input screen
 		namePanel = new JPanel();
 		namePanel.setPreferredSize(new Dimension(575, 375));
 		namePanel.setLayout(null);
 
-		// Tasten erstellen
+        // Create button
 		okBtn = new JButton("Start");
 		okBtn.setBounds(95, 250, 140, 50);
 		okBtn.setFont(new Font("Arial", Font.BOLD, 26));

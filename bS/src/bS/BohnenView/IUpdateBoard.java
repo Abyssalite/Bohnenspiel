@@ -24,13 +24,13 @@ public interface IUpdateBoard {
     }
 
     public default void disableButton(ArrayList<JButton> holeButton, Player currentPlayer, boolean isEditing, boolean isEndGame){
-        if (isEndGame){
-                for(int i = 0; i <= 13; i++)
-                holeButton.get(i).setEnabled(false);
-        }
-        else if (isEditing){
+        if (isEditing){
                 for(int i = 0; i <= 13; i++)
                 holeButton.get(i).setEnabled(true);
+        }
+        else if (isEndGame){
+                for(int i = 0; i <= 13; i++)
+                holeButton.get(i).setEnabled(false);
         }
         else {
                 holeButton.get(0).setEnabled(false);

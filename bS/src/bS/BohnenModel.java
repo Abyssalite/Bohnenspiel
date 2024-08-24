@@ -30,16 +30,29 @@ public class BohnenModel {
     protected void changePlayer(){
         String[] position = currentHole.getPosition().split("_");
 
-        if (position[1].equals("0") || currentHole.getStone() == 0) 
-            canChange = false;
-        else
-            canChange = true;
+        if (position[1].equals("0") || currentHole.getStone() == 0){
+            int number = 0;
+            // make sure the game not stuck in an awkward state
+            for (int i = (playerIndex * 7 + 1); i <= (playerIndex * 7 + 6); i++){
+                if (getHolesList().get(i).getStone() == 0)
+                    number++;
+            }
+            canChange = number == 6 ? true : false;
+        }
+        else {
+            int number = 0;
+            // make sure the game not stuck in an awkward state
+            int next = playerIndex == 0 ? 1 : 0;
+            for (int i = (next * 7 + 1); i <= (next * 7 + 6); i++){
+                if (getHolesList().get(i).getStone() == 0)
+                    number++;
+            }
+            canChange = number == 6 ? false : true;
+        }
 
         if (canChange){
-            playerIndex++;
-            if (playerIndex >= playerList.size()) 
-                playerIndex = 0;
-    
+            System.out.println(playerIndex);
+            playerIndex = playerIndex == 0 ? 1 : 0;
             currentPlayer = playerList.get(playerIndex);
         }
     }
@@ -69,7 +82,7 @@ public class BohnenModel {
         }
 
         for(int i = 0; i <= loop; i++){
-           System.out.println(subStep[i]);
+            System.out.println(subStep[i]);
             for(int j = 1; j <= subStep[i]; j++){
 
                 currentHole = getHolesList().get(selectedIndex + j);
@@ -129,7 +142,7 @@ public class BohnenModel {
 
         if (hole.getIndex() == 0)
             playerList.get(1).setScore(hole.getStone()); 
-        else if (hole.getIndex() == 7) 
+        if (hole.getIndex() == 7) 
             playerList.get(0).setScore(hole.getStone());     
     }
 

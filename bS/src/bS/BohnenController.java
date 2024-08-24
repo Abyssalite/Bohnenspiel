@@ -37,7 +37,7 @@ public class BohnenController implements ActionListener {
                 break;              
             }
             default: {
-                System.err.println("Unexpected input");
+                System.err.println("What did you do?");
                 break;
             }
         }
@@ -76,7 +76,7 @@ class NameInputController implements ActionListener {
                 break;
             }
             default: {
-                System.err.println("Unexpected input");
+                System.err.println("What did you do?");
                 break;
             }
         }
@@ -84,7 +84,7 @@ class NameInputController implements ActionListener {
 
 }
 
-class GameBoardController implements ActionListener, IUpdateBoard{
+class GameBoardController implements ActionListener, IUpdateBoard {
     private BohnenModel model;
     private TitleScreen parent;
     private GameBoard view;
@@ -121,6 +121,7 @@ class GameBoardController implements ActionListener, IUpdateBoard{
                 break;
             }
             case "restartBtn": {
+                isEndGame = false;
                 this.model = new BohnenModel(ISDEBUG);
                 model.startGame(players);
                 init(view.getPlayerElements(), model.getPlayerList());
@@ -138,7 +139,7 @@ class GameBoardController implements ActionListener, IUpdateBoard{
                     handleHoleClick(Integer.parseInt(actionEvent), isEditing);
 
                 } catch (NumberFormatException nfe){
-                    System.err.println("Unexpected input");
+                    System.err.println("What did you do?");
                 }
                 break;
             }
@@ -157,7 +158,7 @@ class GameBoardController implements ActionListener, IUpdateBoard{
             boolean flag = true;
             while (flag){
                 try {
-                    String s = JOptionPane.showInputDialog(view,"Enter stone");
+                    String s = JOptionPane.showInputDialog(view,"Get the stones, get them back");
                     if (s != null){
                         stone = Integer.parseInt(s); 
                         if (stone <= 96){
@@ -165,12 +166,12 @@ class GameBoardController implements ActionListener, IUpdateBoard{
                             update(isEndGame); 
                         }
                         else
-                            JOptionPane.showMessageDialog(view, "There are only 9(6) Infinity Stones");
+                            JOptionPane.showMessageDialog(view, "TThere are 9(6) stones out there");
                     }
                     flag = false;
                     
                 } catch (NumberFormatException nfe){
-                    JOptionPane.showMessageDialog(view, "Wuhttt??");
+                    JOptionPane.showMessageDialog(view, "I can do this all day.");
                 }
             }
         }
@@ -185,10 +186,10 @@ class GameBoardController implements ActionListener, IUpdateBoard{
 
         if (isEndGame && !isEditing){
             if (model.getCurrentPlayer() != null){
-                JOptionPane.showMessageDialog(view, "End??");
+                JOptionPane.showMessageDialog(view, model.getCurrentPlayer().getName() + " snaps his/her fingers ");
             }
             else
-                JOptionPane.showMessageDialog(view, "How??");
+                JOptionPane.showMessageDialog(view, "Perfectly balanced, as all things should be");
         }
     }
 
