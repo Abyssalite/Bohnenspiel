@@ -166,7 +166,7 @@ class GameBoardController implements ActionListener, IUpdateBoard {
                             update(isEndGame); 
                         }
                         else
-                            JOptionPane.showMessageDialog(view, "TThere are 9(6) stones out there");
+                            JOptionPane.showMessageDialog(view, "There are 9(6) stones out there");
                     }
                     flag = false;
                     
