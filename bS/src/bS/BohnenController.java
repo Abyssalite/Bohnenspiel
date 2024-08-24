@@ -184,7 +184,7 @@ class GameBoardController implements ActionListener, IUpdateBoard {
 
         if (isEndGame && !isEditing){
             if (model.getCurrentPlayer() != null){
-                JOptionPane.showMessageDialog(view, model.getCurrentPlayer().getName() + " snaps his/her fingers ");
+                JOptionPane.showMessageDialog(view, model.getCurrentPlayer().getName() + " snaps his fingers ");
             }
             else
                 JOptionPane.showMessageDialog(view, "Perfectly balanced, as all things should be");
