@@ -13,12 +13,12 @@ public class BohnenModel {
 
     Random rand = new Random();
 
-    protected  BohnenModel(boolean isDebug) {
+    protected  BohnenModel(boolean isDebug){
         this.ISDEBUG = isDebug;
         playerIndex = rand.nextInt(2);
     }
 
-    protected void startGame(String[] player) {
+    protected void startGame(String[] player){
         board = new Board();
         playerList = new ArrayList<Player>();
         playerList.add(new Player(player[0] , 0, "B", 7));
@@ -27,7 +27,7 @@ public class BohnenModel {
         canChange = false;
     }
 
-    protected void changePlayer() {
+    protected void changePlayer(){
         String[] position = currentHole.getPosition().split("_");
 
         if (position[1].equals("0") || currentHole.getStone() == 0) 
@@ -35,7 +35,7 @@ public class BohnenModel {
         else
             canChange = true;
 
-        if (canChange) {
+        if (canChange){
             playerIndex++;
             if (playerIndex >= playerList.size()) 
                 playerIndex = 0;
@@ -45,7 +45,7 @@ public class BohnenModel {
     }
 
     // it's a loopHole alright Q.Q
-    protected void loopHole(int selectedIndex) {
+    protected void loopHole(int selectedIndex){
         currentHole = getHolesList().get(selectedIndex);
         int step = currentHole.getStone();
         int loop = 0;
@@ -56,9 +56,9 @@ public class BohnenModel {
         subStep[loop] =  Math.min((13 - selectedIndex), step);
         step -= (13 - selectedIndex);
 
-        while(step > 0) {
+        while(step > 0){
             loop++;
-            if (step  < 14) {
+            if (step  < 14){
                 subStep[loop] = step;
                 step = 0;
             }
@@ -68,17 +68,17 @@ public class BohnenModel {
             }
         }
 
-        for(int i = 0; i <= loop; i++) {
+        for(int i = 0; i <= loop; i++){
            System.out.println(subStep[i]);
-            for(int j = 1; j <= subStep[i]; j++) {
+            for(int j = 1; j <= subStep[i]; j++){
 
                 currentHole = getHolesList().get(selectedIndex + j);
                 position = currentHole.getPosition().split("_");
                 
-                if (!position[1].equals("0")) {    
+                if (!position[1].equals("0")){    
                     setStone(selectedIndex + j, 1, true); 
                 }
-                else if (position[0].equals(currentPlayer.getPosition())) {
+                else if (position[0].equals(currentPlayer.getPosition())){
                     setStone(selectedIndex + j, 1, true); 
                 }
                 else {
@@ -91,38 +91,61 @@ public class BohnenModel {
         }
 
         Holes opposite = getHolesList().get(currentHole.getOpposite());
-        if (currentHole.getStone() == 1 && position[0].equals(String.valueOf(currentPlayer.getPosition()))) {
+        if (currentHole.getStone() == 1 && position[0].equals(String.valueOf(currentPlayer.getPosition()))){
             setStone(currentPlayer.getCollect(), opposite.getStone(), true);
             opposite.setStone(0);
         }
     }
 
-    protected void setStone(int index, int stone, boolean add) {
+    protected boolean endGame(){
+        boolean isEndGame = false;
+        int number = 0;
+        for(int i = 1; i <= 13; i++){
+            if (i != 7 && getHolesList().get(i).getStone() == 0) 
+                number++;
+        }
+
+        if (number == 12){
+            if (playerList.get(0).getScore() > playerList.get(1).getScore()) 
+                currentPlayer = playerList.get(0);
+
+            else if (playerList.get(0).getScore() < playerList.get(1).getScore())
+                currentPlayer = playerList.get(1);
+
+            else 
+                currentPlayer = null;
+
+            isEndGame = true;
+        }
+        return isEndGame;
+    }
+
+    protected void setStone(int index, int stone, boolean add){
         Holes hole = getHolesList().get(index);
         if (add)
             hole.addStone(stone);
         else
             hole.setStone(stone);
 
-        if (hole.getIndex() == 0 )
+        if (hole.getIndex() == 0)
             playerList.get(1).setScore(hole.getStone()); 
         else if (hole.getIndex() == 7) 
-            playerList.get(0).setScore(hole.getStone());       
+            playerList.get(0).setScore(hole.getStone());     
     }
 
-    protected ArrayList<Player> getPlayerList() {
+    protected ArrayList<Player> getPlayerList(){
         return playerList;
     }
 
-    protected ArrayList<Holes> getHolesList() {
+    protected ArrayList<Holes> getHolesList(){
         return board.getHolesList();
     }
 
-    protected Player getCurrentPlayer() {
+    protected Player getCurrentPlayer(){
         return currentPlayer;
     }
 
-    protected boolean isDebug() {
+    protected boolean isDebug(){
         return ISDEBUG;
     }
 

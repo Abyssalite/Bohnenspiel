@@ -22,7 +22,7 @@ public class NameInput extends JDialog{
     private JTextField textField1;
     private JTextField textField2;
 
-	public NameInput() {
+	public NameInput(){
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize(); 
         int width = (int) (size.getWidth() * 0.35);
         int height = (int) (size.getHeight() * 0.30);
@@ -36,7 +36,7 @@ public class NameInput extends JDialog{
 		pack();
 	}
 
-	private JPanel NameInputPanel() {
+	private JPanel NameInputPanel(){
 		// Titelbildschirm erstellen
 		namePanel = new JPanel();
 		namePanel.setPreferredSize(new Dimension(575, 375));
@@ -94,12 +94,12 @@ public class NameInput extends JDialog{
 		return namePanel;
 	}
 
-    public void nameActionListener(ActionListener evt) {
+    public void nameActionListener(ActionListener evt){
 		okBtn.addActionListener(evt);
 		clrBtn.addActionListener(evt);
 	}
 
-    public String[] getPlayerName() {
+    public String[] getPlayerName(){
         String[] playerName = {textField1.getText(), textField2.getText()};
         return playerName;
     }

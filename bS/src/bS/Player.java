@@ -6,30 +6,30 @@ public class Player {
 	private int score;
     private final int COLLECT;
 
-	protected Player(String name, int score, String position, int collect) {
+	protected Player(String name, int score, String position, int collect){
 		this.NAME = name;
 		this.score = score;
         this.POSITION = position;
         this.COLLECT = collect;
 	} 
 
-    public String getPosition() {
+    public String getPosition(){
         return POSITION;
     }
 
-    public int getCollect() {
+    public int getCollect(){
         return COLLECT;
     }
 
-    public String getName() {
+    public String getName(){
         return NAME;
     }
 
-    public int getScore() {
+    public int getScore(){
         return score;
     }
 
-    protected void setScore(int score) {
+    protected void setScore(int score){
         this.score = score;
     }
 

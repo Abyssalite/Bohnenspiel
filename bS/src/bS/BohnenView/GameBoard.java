@@ -37,7 +37,7 @@ public class GameBoard extends JFrame implements ICustomButton{
     private JLabel backgroundLabel;
     private ImageIcon imageIcon;
 
-	public GameBoard(boolean isDebug) {
+	public GameBoard(boolean isDebug){
         this.isDebug = isDebug;
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize(); 
         int width = (int) (size.getWidth() * 0.99);
@@ -56,7 +56,7 @@ public class GameBoard extends JFrame implements ICustomButton{
 		toFront();
 	}
 
-	private JPanel titelPanel(int width, int height)  {
+	private JPanel titelPanel(int width, int height){
 		// Titelbildschirm erstellen
 		boardPanel = new JPanel();
 		boardPanel.setPreferredSize(new Dimension(width, height));
@@ -64,9 +64,9 @@ public class GameBoard extends JFrame implements ICustomButton{
 
         backgroundLabel = new JLabel();
         if (isDebug)
-            imageIcon = new ImageIcon("Board_debug.png");  
+            imageIcon = new ImageIcon("Board_debug.png");
         else
-            imageIcon = new ImageIcon("Board.png");  
+            imageIcon = new ImageIcon("Board.png");
 
         backgroundLabel.setVerticalAlignment(1);
         backgroundLabel.setHorizontalAlignment(2);
@@ -113,7 +113,7 @@ public class GameBoard extends JFrame implements ICustomButton{
         holeButtonList.add(inx12 = new JButton("0"));
         holeButtonList.add(inx13 = new JButton("0"));
 
-        for(int i = 0; i <= 13; i++) {
+        for(int i = 0; i <= 13; i++){
             holeButtonList.get(i).setFont(new Font("Arial", Font.BOLD, 40));
             holeButtonList.get(i).setBackground(Color.BLACK);
             holeButtonList.get(i).setForeground(Color.WHITE);
@@ -123,13 +123,13 @@ public class GameBoard extends JFrame implements ICustomButton{
             holeButtonList.get(i).setOpaque(false);
 
             int index = i;
-            holeButtonList.get(i).addMouseListener(new MouseAdapter() {
+            holeButtonList.get(i).addMouseListener(new MouseAdapter(){
                 @Override
-                public void mouseEntered(MouseEvent e) {
+                public void mouseEntered(MouseEvent e){
                     highlineHole(holeButtonList, index, "enter");
                 }
                 @Override
-	            public void mouseExited(MouseEvent e) {
+	            public void mouseExited(MouseEvent e){
                     highlineHole(holeButtonList, index, "exit");
 	            }
             });
@@ -164,7 +164,7 @@ public class GameBoard extends JFrame implements ICustomButton{
             boardPanel.add(editBtn);
         } 
 
-        for(Map.Entry<String, JButton> button : boardButtonMap.entrySet()) {
+        for(Map.Entry<String, JButton> button : boardButtonMap.entrySet()){
             button.getValue().setFont(new Font("Arial", Font.BOLD, 40));
             button.getValue().setBackground(Color.BLACK);
             button.getValue().setForeground(Color.WHITE);
@@ -173,17 +173,17 @@ public class GameBoard extends JFrame implements ICustomButton{
             button.getValue().setFocusPainted(false);
             button.getValue().setOpaque(false);
 
-            button.getValue().addMouseListener(new MouseAdapter() {
+            button.getValue().addMouseListener(new MouseAdapter(){
                 @Override
-                public void mouseEntered(MouseEvent e) {
+                public void mouseEntered(MouseEvent e){
                     highlineButton(boardButtonMap, button.getKey(), "enter");
                 }
                 @Override
-	            public void mouseExited(MouseEvent e) {
+	            public void mouseExited(MouseEvent e){
                     highlineButton(boardButtonMap, button.getKey(), "exit");
 	            }
                 @Override
-	            public void mousePressed(MouseEvent e) {
+	            public void mousePressed(MouseEvent e){
                     highlineButton(boardButtonMap, button.getKey(), "pressed");
 	            }
             });
@@ -202,13 +202,13 @@ public class GameBoard extends JFrame implements ICustomButton{
         boardPanel.add(player1Score);
         boardPanel.add(player2Name);
         boardPanel.add(player2Score);
-        boardPanel.add(backgroundLabel);  
+        boardPanel.add(backgroundLabel);
 
 		return boardPanel;
 	}
 
 	// actionListener für die Titelbildschirm
-	public void boardActionListener(ActionListener evt) {
+	public void boardActionListener(ActionListener evt){
 		restartBtn.addActionListener(evt);
 		menuBtn.addActionListener(evt);
         quitBtn.addActionListener(evt);
@@ -217,15 +217,15 @@ public class GameBoard extends JFrame implements ICustomButton{
             button.addActionListener(evt);
 	}
 
-    public LinkedHashMap<String, JButton> getButtonMap() {
+    public LinkedHashMap<String, JButton> getButtonMap(){
         return boardButtonMap;
     }
 
-    public ArrayList<JLabel> getPlayerElements() {
+    public ArrayList<JLabel> getPlayerElements(){
         return playerElements;
     }
 
-    public ArrayList<JButton> getHoleButton() {
+    public ArrayList<JButton> getHoleButton(){
         return holeButtonList;
     }
     

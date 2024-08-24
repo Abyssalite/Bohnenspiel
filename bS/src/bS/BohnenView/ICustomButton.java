@@ -7,17 +7,17 @@ import javax.swing.JButton;
 
 public interface ICustomButton {
 
-	public default void highlineButton(LinkedHashMap<String, JButton> buttons, String object, String command) {
-        switch (command) {
-            case "enter":{
+	public default void highlineButton(LinkedHashMap<String, JButton> buttons, String object, String command){
+        switch (command){
+            case "enter": {
                 buttons.get(object).setForeground(Color.BLUE);;
                 break;
             }
-            case "exit":{
+            case "exit": {
                 buttons.get(object).setForeground(Color.WHITE);;
                 break;
             }
-            case "pressed":{
+            case "pressed": {
                 buttons.get(object).setForeground(Color.RED);;
                 break;
             }
@@ -26,16 +26,16 @@ public interface ICustomButton {
         }
     }
 
-    public default void highlineHole(ArrayList<JButton> buttons, int index, String command) {
-        switch (command) {
-            case "enter":{
+    public default void highlineHole(ArrayList<JButton> buttons, int index, String command){
+        switch (command){
+            case "enter": {
                 if (index > 0 && index < 8)
                     buttons.get(index).setForeground(Color.BLUE);
                 else
                     buttons.get(index).setForeground(Color.RED);
                 break;
             }
-            case "exit":{
+            case "exit": {
                 buttons.get(index).setForeground(Color.WHITE);;
                 break;
             }

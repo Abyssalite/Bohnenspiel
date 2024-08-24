@@ -6,34 +6,34 @@ public class Holes {
     private int stone;
     private final int OPPOSITE;
 
-    protected Holes(int stone, int index, String position, int opposite) {
+    protected Holes(int stone, int index, String position, int opposite){
        this.INDEX = index;
        this.POSITION = position;
        this.stone = stone;
        this.OPPOSITE = opposite;
     }
 
-    protected int getOpposite() {
+    protected int getOpposite(){
         return OPPOSITE;
     }
 
-    protected int getIndex() {
+    protected int getIndex(){
         return INDEX;
     }
 
-    public int getStone() {
+    public int getStone(){
         return stone;
     }
 
-    protected String getPosition() {
+    protected String getPosition(){
         return POSITION;
     }
 
-    protected void addStone(int amount) {
+    protected void addStone(int amount){
             stone += amount;
     }
 
-    protected void setStone(int amount) {
+    protected void setStone(int amount){
             stone = amount;
     }
 

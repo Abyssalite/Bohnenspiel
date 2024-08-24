@@ -26,7 +26,7 @@ public class TitleScreen extends JFrame implements ICustomButton{
     private JLabel backgroundLabel;
     private ImageIcon imageIcon;
 
-	public TitleScreen() {
+	public TitleScreen(){
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize(); 
         int width = (int) (size.getWidth() * 0.99);
         int height = (int) (size.getHeight() * 0.93);
@@ -44,7 +44,7 @@ public class TitleScreen extends JFrame implements ICustomButton{
 		toFront();
 	}
 
-	private JPanel titelPanel(int width, int height)  {
+	private JPanel titelPanel(int width, int height){
 		// Titelbildschirm erstellen
 		menuPanel = new JPanel();
 		menuPanel.setPreferredSize(new Dimension(width, height));
@@ -63,7 +63,7 @@ public class TitleScreen extends JFrame implements ICustomButton{
         titleButtonMap.put("debugBtn", debugBtn = new JButton("Debug"));
         titleButtonMap.put("quitBtn", quitBtn = new JButton("Quit"));
 
-        for(Map.Entry<String, JButton> button : titleButtonMap.entrySet()) {
+        for(Map.Entry<String, JButton> button : titleButtonMap.entrySet()){
             button.getValue().setFont(new Font("Arial", Font.BOLD, 50));
             button.getValue().setBackground(Color.BLACK);
             button.getValue().setForeground(Color.WHITE);
@@ -72,17 +72,17 @@ public class TitleScreen extends JFrame implements ICustomButton{
             button.getValue().setFocusPainted(false);
             button.getValue().setOpaque(false);
 
-            button.getValue().addMouseListener(new MouseAdapter() {
+            button.getValue().addMouseListener(new MouseAdapter(){
                 @Override
-                public void mouseEntered(MouseEvent e) {
+                public void mouseEntered(MouseEvent e){
                     highlineButton(titleButtonMap, button.getKey(), "enter");
                 }
                 @Override
-	            public void mouseExited(MouseEvent e) {
+	            public void mouseExited(MouseEvent e){
                     highlineButton(titleButtonMap, button.getKey(), "exit");
 	            }
                 @Override
-	            public void mousePressed(MouseEvent e) {
+	            public void mousePressed(MouseEvent e){
                     highlineButton(titleButtonMap, button.getKey(), "pressed");
 	            }
             });
@@ -103,13 +103,13 @@ public class TitleScreen extends JFrame implements ICustomButton{
 	}
 
 	// actionListener für die Titelbildschirm
-	public void titleActionListener(ActionListener evt) {
+	public void titleActionListener(ActionListener evt){
 		startBtn.addActionListener(evt);
 		debugBtn.addActionListener(evt);
         quitBtn.addActionListener(evt);
 	}
 
-    protected LinkedHashMap<String, JButton> getButtonMap() {
+    protected LinkedHashMap<String, JButton> getButtonMap(){
         return titleButtonMap;
     }
     
