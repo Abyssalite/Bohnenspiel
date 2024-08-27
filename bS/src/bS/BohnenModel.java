@@ -36,7 +36,6 @@ public class BohnenModel {
             canChange = true;
 
         if (canChange){
-            System.out.println(playerIndex);
             playerIndex = playerIndex == 0 ? 1 : 0;
             currentPlayer = playerList.get(playerIndex);
         }
