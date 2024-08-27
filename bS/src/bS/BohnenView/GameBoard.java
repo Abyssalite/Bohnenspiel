@@ -18,6 +18,10 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * The class of the board game view.
+ **/
+
 public class GameBoard extends JFrame implements ICustomButton {
     private JPanel boardPanel;
     private ArrayList<JButton> holeButtonList;
@@ -37,6 +41,12 @@ public class GameBoard extends JFrame implements ICustomButton {
     private JLabel backgroundLabel;
     private ImageIcon imageIcon;
 
+	/**
+	 * Constructor for the board view.
+	 * 
+	 * @param isDebug - flag to show that the game is on debug mode
+	 **/
+    
 	public GameBoard(boolean isDebug){
         this.isDebug = isDebug;
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize(); 
@@ -55,7 +65,14 @@ public class GameBoard extends JFrame implements ICustomButton {
 		setVisible(true);
 		toFront();
 	}
-
+	
+	/**
+	 * Elements of the board view.
+	 * 
+	 * @param width - width of the screen
+	 * @param height - height of the screen
+	 **/
+	
 	private JPanel titelPanel(int width, int height){
 		// Game screen
 		boardPanel = new JPanel();
@@ -123,7 +140,7 @@ public class GameBoard extends JFrame implements ICustomButton {
             holeButtonList.get(i).setOpaque(false);
 
             int index = i;
-            // Override default mouse behaviour for custom button
+            // Override default mouse behavior for custom button
             holeButtonList.get(i).addMouseListener(new MouseAdapter(){
                 @Override
                 public void mouseEntered(MouseEvent e){
@@ -174,7 +191,7 @@ public class GameBoard extends JFrame implements ICustomButton {
             button.getValue().setFocusPainted(false);
             button.getValue().setOpaque(false);
 
-            // Override default mouse behaviour for custom button
+            // Override default mouse behavior for custom button
             button.getValue().addMouseListener(new MouseAdapter(){
                 @Override
                 public void mouseEntered(MouseEvent e){

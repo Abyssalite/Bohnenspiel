@@ -1,11 +1,24 @@
 package bS;
 
+/**
+ * This class constructs the holes of the board.
+ **/
+
 public class Holes {
     private final int INDEX;
 	private final String  POSITION;
     private int stone;
     private final int OPPOSITE;
 
+    /**
+     * Constructor for the Holes class.
+     * 
+     * @param stone - the number of the stones
+     * @param index - the index of the hole
+     * @param position - the position of the hole on the board
+     * @param opposite - the index of the opposite hole
+     **/
+    
     protected Holes(int stone, int index, String position, int opposite){
        this.INDEX = index;
        this.POSITION = position;

@@ -6,15 +6,31 @@ import javax.swing.JOptionPane;
 
 import bS.BohnenView.*;
 
+/**
+ * The controller for the menu screen.
+ **/
+
 public class BohnenController implements ActionListener {
 	private TitleScreen view;
     private NameInput nameInput;
 
+    /**
+     * Constructor for the controller title menu screen.
+     * 
+     * @param view - the menu screen
+     **/
+    
 	protected BohnenController(TitleScreen view){
 		this.view = view;
 		view.titleActionListener(this);
 	}
 
+	 /**
+     * The action for the main screen.
+     * 
+     * @param evt - the event of the menu
+     **/
+	
     public void actionPerformed(ActionEvent evt){
         String actionEvent = evt.getActionCommand();
         switch (actionEvent){
@@ -45,18 +61,36 @@ public class BohnenController implements ActionListener {
 
 }
 
+/**
+ * Controller for the name input window.
+ **/
+
 class NameInputController implements ActionListener {
 	private NameInput view;
     private TitleScreen parent;
     private GameBoard gameBoard;
     private final boolean ISDEBUG;
 
+    /**
+     * Constructor for the controller.
+     * 
+     * @param view - the name input screen
+     * @param parent - the menu window screen
+     * @param isDebug - the flag of the selected game mode
+     **/
+    
     protected  NameInputController(NameInput view, TitleScreen parent, boolean isDebug){
         this.view = view;
         this.parent = parent;
         this.ISDEBUG = isDebug;
     }
 
+    /**
+     * The action for the main screen.
+     * 
+     * @param evt - the event
+     **/
+    
     public void actionPerformed(ActionEvent evt){
         String actionEvent = evt.getActionCommand();
         switch (actionEvent){
@@ -84,6 +118,10 @@ class NameInputController implements ActionListener {
 
 }
 
+/**
+ * Controller for the board game window.
+ **/
+
 class GameBoardController implements ActionListener, IUpdateBoard {
     private BohnenModel model;
     private TitleScreen parent;
@@ -92,6 +130,15 @@ class GameBoardController implements ActionListener, IUpdateBoard {
     private String[] players;
     private boolean isEditing;
     private boolean isEndGame;
+    
+    /**
+     * Constructor for the board game controller
+     * 
+     * @param view - the the board game screen
+     * @param parent - the menu screen
+     * @param isDebug - the flag of the debug mode
+     * @param players - the array of player names
+     **/
     
     protected  GameBoardController(GameBoard view, TitleScreen parent, boolean isDebug, String[] players){
         this.view = view;
@@ -107,6 +154,12 @@ class GameBoardController implements ActionListener, IUpdateBoard {
         update(isEndGame);
     }
 
+    /**
+     * The action for the board game screen.
+     * 
+     * @param evt - the event
+     **/
+    
     public void actionPerformed(ActionEvent evt){
         String actionEvent = evt.getActionCommand();
         switch (actionEvent){
@@ -146,6 +199,13 @@ class GameBoardController implements ActionListener, IUpdateBoard {
         }
     }
 
+    /**
+     * Function to handle the click on the hole button.
+     * 
+     * @param index - the index of the hole
+     * @param isEditing - the flag on the debug mode that shows whether the holes are editable
+     **/
+    
     private void handleHoleClick(int index, boolean isEditing){
         if (!isEditing){
             model.loopHole(index);
@@ -156,18 +216,18 @@ class GameBoardController implements ActionListener, IUpdateBoard {
             boolean flag = true;
             while (flag){
                 try {
-                    String s = JOptionPane.showInputDialog(view,"Get the stones, get them back");
+                    String s = JOptionPane.showInputDialog(view,"Insert the number of the stones");
                     if (s != null){
                         stone = Integer.parseInt(s); 
                         if (stone <= 96)
                             model.setStone(index, stone, false);
                         else
-                            JOptionPane.showMessageDialog(view, "There are 9(6) stones out there");
+                            JOptionPane.showMessageDialog(view, "Maximum number is 96");
                     }
                     flag = false;
                     
                 } catch (NumberFormatException nfe){
-                    JOptionPane.showMessageDialog(view, "I can do this all day.");
+                    JOptionPane.showMessageDialog(view, "Insert number only");
                 }
             }
         }
@@ -177,6 +237,10 @@ class GameBoardController implements ActionListener, IUpdateBoard {
         update(isEndGame);
     }
 
+    /**
+     * Function to update the element in the GUI.
+     **/
+    
     private void update(boolean isEndGame){
         highlinePlayer(view.getPlayerElements(), model.getCurrentPlayer(), isEndGame);
         updateStoneNumber(view.getHoleButton(),model.getHolesList());
@@ -185,10 +249,10 @@ class GameBoardController implements ActionListener, IUpdateBoard {
 
         if (isEndGame && !isEditing){
             if (model.getCurrentPlayer() != null){
-                JOptionPane.showMessageDialog(view, model.getCurrentPlayer().getName() + " snaps his fingers ");
+                JOptionPane.showMessageDialog(view, model.getCurrentPlayer().getName() + " won the game ");
             }
             else
-                JOptionPane.showMessageDialog(view, "Perfectly balanced, as all things should be");
+                JOptionPane.showMessageDialog(view, "Draw");
         }
     }
 

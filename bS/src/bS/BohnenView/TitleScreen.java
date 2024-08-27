@@ -16,6 +16,10 @@ import javax.swing.ImageIcon;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * The view of the menu screen.
+ **/
+
 public class TitleScreen extends JFrame implements ICustomButton {
     private JPanel menuPanel;
     private LinkedHashMap<String, JButton> titleButtonMap;
@@ -26,6 +30,10 @@ public class TitleScreen extends JFrame implements ICustomButton {
     private JLabel backgroundLabel;
     private ImageIcon imageIcon;
 
+    /**
+     * Constructor for the menu screen.
+     **/
+    
 	public TitleScreen(){
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize(); 
         int width = (int) (size.getWidth() * 0.99);
@@ -44,12 +52,20 @@ public class TitleScreen extends JFrame implements ICustomButton {
 		toFront();
 	}
 
+    /**
+     * The elements of the menu screen.
+     * 
+     * @param width - the width of the screen
+     * @param height - the height of the screen
+     **/
+	
 	private JPanel titelPanel(int width, int height){
 		// Menu screen
 		menuPanel = new JPanel();
 		menuPanel.setPreferredSize(new Dimension(width, height));
 		menuPanel.setLayout(null);
-
+		
+		// Background picture
         backgroundLabel = new JLabel();
 		imageIcon = new ImageIcon("Menu.png");
         backgroundLabel.setVerticalAlignment(1);
@@ -62,7 +78,8 @@ public class TitleScreen extends JFrame implements ICustomButton {
         titleButtonMap.put("startBtn", startBtn = new JButton("Start"));
         titleButtonMap.put("debugBtn", debugBtn = new JButton("Debug"));
         titleButtonMap.put("quitBtn", quitBtn = new JButton("Quit"));
-
+        
+        //Button style
         for(Map.Entry<String, JButton> button : titleButtonMap.entrySet()){
             button.getValue().setFont(new Font("Arial", Font.BOLD, 50));
             button.getValue().setBackground(Color.BLACK);
@@ -72,7 +89,7 @@ public class TitleScreen extends JFrame implements ICustomButton {
             button.getValue().setFocusPainted(false);
             button.getValue().setOpaque(false);
 
-            // Override default mouse behaviour for custom button
+            // Override default mouse behavior for custom button
             button.getValue().addMouseListener(new MouseAdapter(){
                 @Override
                 public void mouseEntered(MouseEvent e){
@@ -109,7 +126,7 @@ public class TitleScreen extends JFrame implements ICustomButton {
 		debugBtn.addActionListener(evt);
         quitBtn.addActionListener(evt);
 	}
-
+	
     protected LinkedHashMap<String, JButton> getButtonMap(){
         return titleButtonMap;
     }

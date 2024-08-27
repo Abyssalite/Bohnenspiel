@@ -12,6 +12,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/**
+ * The view for the name input window.
+ **/
+
 public class NameInput extends JDialog {
     private JPanel namePanel;
     private JButton okBtn;
@@ -21,6 +25,10 @@ public class NameInput extends JDialog {
     private JLabel player2;
     private JTextField textField1;
     private JTextField textField2;
+ 
+    /**
+     * Constructor for the name input window.
+     **/
 
 	public NameInput(){
         Dimension size = Toolkit.getDefaultToolkit().getScreenSize(); 
@@ -35,7 +43,12 @@ public class NameInput extends JDialog {
         setModal(true);
 		pack();
 	}
+	
+	/**
+	 * The element for the name input window.
+	 **/
 
+	
 	private JPanel NameInputPanel(){
 		// Name input screen
 		namePanel = new JPanel();

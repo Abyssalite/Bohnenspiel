@@ -1,6 +1,10 @@
 package bS;
 import java.util.ArrayList;
 
+/**
+ * This class constructs the board of the game and initializes the holes in the board.
+ **/
+
 public class Board {
     	private ArrayList<Holes> holesList;
 
@@ -29,7 +33,11 @@ public class Board {
                 }
             }
         }
-
+        
+        /**
+         * Function to return the list of the holes.
+         * @return holesList the list of the holes.
+         **/
         protected ArrayList<Holes> getHolesList(){
             return holesList;
         }

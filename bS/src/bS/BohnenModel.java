@@ -2,6 +2,10 @@ package bS;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * This class controls the logic of the game.
+ **/
+
 public class BohnenModel {
     private ArrayList<Player> playerList;
     private Board board;
@@ -13,11 +17,23 @@ public class BohnenModel {
 
     Random rand = new Random();
 
+    /**
+     * Constructor for the BohnenModel class.
+     * 
+     * @param isDebug - the flag to show that the game is in debug mode.
+     **/
+    
     protected  BohnenModel(boolean isDebug){
         this.ISDEBUG = isDebug;
         playerIndex = rand.nextInt(2);
     }
-
+    
+    /**
+     * Function to start the game.
+     * 
+     * @param player - the array of the players name.
+     **/
+    
     protected void startGame(String[] player){
         board = new Board();
         playerList = new ArrayList<Player>();
@@ -26,7 +42,11 @@ public class BohnenModel {
         currentPlayer = playerList.get(playerIndex);
         canChange = false;
     }
-
+    
+    /**
+     * Function to check the condition of stones / holes and switch the player.
+     **/
+    
     protected void changePlayer(){
         String[] position = currentHole.getPosition().split("_");
 
@@ -40,8 +60,13 @@ public class BohnenModel {
             currentPlayer = playerList.get(playerIndex);
         }
     }
-
-    // it's a loopHole alright Q.Q
+    
+    /**
+     * Function to pick up the stone(s) in the selected index and put to the next hole(s) in an anti clockwise direction.
+     * 
+     * @param selectedIndex - the index of the selected hole.
+     **/
+    
     protected void loopHole(int selectedIndex){
         currentHole = getHolesList().get(selectedIndex);
         int step = currentHole.getStone();
@@ -88,7 +113,7 @@ public class BohnenModel {
         }
 
         Holes opposite = getHolesList().get(currentHole.getOpposite());
-        if (currentHole.getStone() == 1 && position[0].equals(String.valueOf(currentPlayer.getPosition())) && currentHole.getIndex() != 0){
+        if (currentHole.getStone() == 1 && position[0].equals(currentPlayer.getPosition()) ){
             int oppositeStone = opposite.getStone();
             opposite.setStone(0);
             setStone(currentPlayer.getCollect(), oppositeStone, true);
@@ -96,6 +121,12 @@ public class BohnenModel {
         }
     }
 
+    /**
+     * Function to check the condition for the end of the game.
+     * 
+     * @return isEndGame - the game ends.
+     **/
+    
     protected boolean endGame(){
         boolean isEndGame = false;
         int number = 0;
@@ -123,7 +154,15 @@ public class BohnenModel {
         }
         return isEndGame;
     }
-
+    
+    /**
+     * Function to set or add the number of stones into the hole.
+     * 
+     * @param index - the index of the hole
+     * @param stone - the number of the stone
+     * @param add - the flag whether to set or add the stone depending on the mode
+     **/
+    
     protected void setStone(int index, int stone, boolean add){
         Holes hole = getHolesList().get(index);
         if (add)

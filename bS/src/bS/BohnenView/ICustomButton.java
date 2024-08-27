@@ -5,8 +5,20 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import javax.swing.JButton;
 
+/**
+ * Interface to edit the default behavior of the buttons.
+ **/
+
 public interface ICustomButton {
 
+	/**
+	 * custom behavior for functional buttons.
+	 * 
+	 * @param buttons - array list of all the buttons
+	 * @param object - which button is currently selected
+	 * @param command - the button commands
+	 **/
+	
 	public default void highlineButton(LinkedHashMap<String, JButton> buttons, String object, String command){
         switch (command){
             case "enter": {
@@ -26,6 +38,14 @@ public interface ICustomButton {
         }
     }
 
+	/**
+	 * custom behavior for hole buttons.
+	 * 
+	 * @param buttons - array list of all the holes as a button
+	 * @param index - the index of the hole as a button
+	 * @param command - 
+	 **/
+	
     public default void highlineHole(ArrayList<JButton> buttons, int index, String command){
         switch (command){
             case "enter": {

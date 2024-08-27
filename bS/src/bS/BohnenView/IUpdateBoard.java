@@ -10,19 +10,47 @@ import javax.swing.JLabel;
 import bS.Holes;
 import bS.Player;
 
+/**
+ * Interface to update the element in the board
+ **/
+
 public interface IUpdateBoard {
+	
+		/**
+		 * Initial value for the player's attributes.
+		 * 
+		 * @param playerElements - the array list of the name's label
+		 * @param players - the array list of the players
+		 **/
+	
         public default void init(ArrayList<JLabel> playerElements, ArrayList<Player> players){
             playerElements.get(0).setText(players.get(0).getName());
             playerElements.get(1).setText(players.get(1).getName());
             updateScore(playerElements, players);
     }
 
+    /**
+     * Update the stone number in the GUI
+     * 
+     * @param holeButton - array list of all the holes as a button
+     * @param holes - array list of all of the holes
+     **/
+
     public default void updateStoneNumber(ArrayList<JButton> holeButton, ArrayList<Holes> holes){
         for(int i = 0; i <= 13; i++){
                 holeButton.get(i).setText(String.valueOf(holes.get(i).getStone()));
         }
     }
-
+    
+    /**
+     * Disable the hole as a button when it is not the current player's turn.
+     * 
+     * @param holeButton - array list of all the holes as a button
+     * @param currentPlayer - the player in turn
+     * @param isEditing - the flag to show that the game is on editing mode
+     * @param isEndGame - the flag to show that the game has ended.
+     **/
+    
     public default void disableButton(ArrayList<JButton> holeButton, Player currentPlayer, boolean isEditing, boolean isEndGame){
         if (isEditing){
                 for(int i = 0; i <= 13; i++)
@@ -51,7 +79,15 @@ public interface IUpdateBoard {
                 }
         }
     }
-
+    
+    /**
+     * Highlight the current player, when it is their turn.
+     * 
+     * @param playerElements - the array list of the name's label
+     * @param currentPlayer - the player in turn
+     * @param isEndGame - the flag to show that the game has ended.
+     **/
+    
     public default void highlinePlayer(ArrayList<JLabel> playerElements, Player currentPlayer, boolean isEndGame){
         if (isEndGame){
                 playerElements.get(0).setFont(new Font( "Arial", Font.PLAIN, 40));
@@ -73,6 +109,13 @@ public interface IUpdateBoard {
         }
     }
 
+    /**
+     * Update the player's score in the board
+     * 
+     * @param playerElements - the array list of the name's label
+     * @param players - the array list of the players
+     **/
+    
     public default void updateScore(ArrayList<JLabel> playerElements, ArrayList<Player> players){
         playerElements.get(2).setText(String.valueOf(players.get(0).getScore()));
         playerElements.get(3).setText(String.valueOf(players.get(1).getScore()));
