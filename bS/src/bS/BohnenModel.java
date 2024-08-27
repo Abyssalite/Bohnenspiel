@@ -30,25 +30,10 @@ public class BohnenModel {
     protected void changePlayer(){
         String[] position = currentHole.getPosition().split("_");
 
-        if (position[1].equals("0") || currentHole.getStone() == 0){
-            int number = 0;
-            // make sure the game not stuck in an awkward state
-            for (int i = (playerIndex * 7 + 1); i <= (playerIndex * 7 + 6); i++){
-                if (getHolesList().get(i).getStone() == 0)
-                    number++;
-            }
-            canChange = number == 6 ? true : false;
-        }
-        else {
-            int number = 0;
-            // make sure the game not stuck in an awkward state
-            int next = playerIndex == 0 ? 1 : 0;
-            for (int i = (next * 7 + 1); i <= (next * 7 + 6); i++){
-                if (getHolesList().get(i).getStone() == 0)
-                    number++;
-            }
-            canChange = number == 6 ? false : true;
-        }
+        if (position[1].equals("0") || currentHole.getStone() == 0)
+            canChange = false;
+        else 
+            canChange = true;
 
         if (canChange){
             System.out.println(playerIndex);
@@ -104,21 +89,30 @@ public class BohnenModel {
         }
 
         Holes opposite = getHolesList().get(currentHole.getOpposite());
-        if (currentHole.getStone() == 1 && position[0].equals(String.valueOf(currentPlayer.getPosition()))){
-            setStone(currentPlayer.getCollect(), opposite.getStone(), true);
+        if (currentHole.getStone() == 1 && position[0].equals(String.valueOf(currentPlayer.getPosition())) && currentHole.getIndex() != 0){
+            int oppositeStone = opposite.getStone();
             opposite.setStone(0);
+            setStone(currentPlayer.getCollect(), oppositeStone, true);
+
         }
     }
 
     protected boolean endGame(){
         boolean isEndGame = false;
         int number = 0;
-        for(int i = 1; i <= 13; i++){
-            if (i != 7 && getHolesList().get(i).getStone() == 0) 
+        for (int i = (playerIndex * 7 + 1); i <= (playerIndex * 7 + 6); i++){
+            if (getHolesList().get(i).getStone() == 0)
                 number++;
         }
 
-        if (number == 12){
+        if (number == 6){
+            int next = playerIndex == 0 ? 1 : 0;
+            number = playerList.get(next).getScore();
+            for (int i = (next * 7 + 1); i <= (next * 7 + 6); i++){
+                    number += getHolesList().get(i).getStone();
+            }
+            playerList.get(next).setScore(number);
+
             if (playerList.get(0).getScore() > playerList.get(1).getScore()) 
                 currentPlayer = playerList.get(0);
             else if (playerList.get(0).getScore() < playerList.get(1).getScore())

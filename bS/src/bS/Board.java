@@ -14,7 +14,7 @@ public class Board {
                         holesList.add(new Holes(4, i ,"B_"+ (i % 7), (i + j)));
                     }
                     else {
-                        holesList.add(new Holes(0, i ,"R_"+ (i % 7), (7)));
+                        holesList.add(new Holes(0, i ,"R_"+ (i % 7), (0)));
                     }
                     j -= 2;
                 }
@@ -23,7 +23,7 @@ public class Board {
                         holesList.add(new Holes(4, i ,"R_"+ ((i - j) % 7), (i - j)));
                     }
                     else {
-                        holesList.add(new Holes(0, i ,"B_"+ ((i - j) % 7), (0)));
+                        holesList.add(new Holes(0, i ,"B_"+ ((i - j) % 7), (7)));
                     }
                     j += 2;
                 }
