@@ -150,7 +150,6 @@ class GameBoardController implements ActionListener, IUpdateBoard {
         if (!isEditing){
             model.loopHole(index);
             update(isEndGame);
-            model.changePlayer();
         }
         else {
             int stone;
@@ -173,6 +172,8 @@ class GameBoardController implements ActionListener, IUpdateBoard {
             }
         }
         isEndGame = model.endGame();
+        if(!isEndGame && !isEditing) model.changePlayer();
+
         update(isEndGame);
     }
 
